@@ -1,0 +1,219 @@
+$light-gray: var(--color-footer);
+$gray: #fff;
+$slate: darken(#eceef1, 70%);
+$turquoise: #1abc9c;
+
+
+
+
+
+.groupDesc{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border:2px solid #e3e3e3;
+  margin-bottom: 5px;
+  
+}
+.wrapper {
+  margin: 2em auto;
+  max-width: 1000px;
+
+  background-color: #fff;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+}
+
+
+.header {
+  padding: 30px 30px 0;
+  text-align: center;
+
+  &__title {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 2.5em;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+  &__subtitle {
+    margin: 0;
+    font-size: 1.5em;
+    color: $gray;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+}
+
+//Grid Container
+.cards {
+  padding: 15px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+//Cards
+.card {
+  margin: 15px; 
+  width: calc((100% / 3) - 30px);
+  transition: all 0.2s ease-in-out;
+
+  //media queries for stacking cards
+  @media screen and (max-width: 991px) {
+    width: calc((100% / 2) - 30px);
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+
+ 
+
+  &__inner {
+    width: 100%;
+    padding: 30px;
+    position: relative;
+    cursor: pointer;
+    
+    background-color: $gray;
+    color: $light-gray;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    text-align: center;
+
+    transition: all 0.2s ease-in-out;
+    
+    &:after {
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .fa {
+      width: 100%;
+      margin-top: .25em;
+    }
+  }
+
+  
+  &.is-collapsed {
+    
+    .card__inner {
+      &:after {
+        content: "";
+        opacity: 0;
+      }
+    }
+    .card__expander {
+      max-height: 0;
+      min-height: 0;
+      overflow: hidden;
+      margin-top: 0;
+      opacity: 0;
+    }
+  }
+
+  &.is-expanded {
+
+    .card__inner {
+      background-color: $turquoise;
+      
+      &:after{
+        content: "";
+        opacity: 1;
+        display: block;
+        height: 0;
+        width: 0;
+        position: absolute;
+        bottom: -30px;
+        left: calc(50% - 15px);
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid #333a45;
+      }
+      
+      //folder open icon
+      .fa:before {
+        content: "\f115";
+      }
+    }
+
+    .card__expander {
+      max-height: 1000px;
+      min-height: 200px;
+      overflow: visible;
+      margin-top: 30px;
+      opacity: 1;
+    }
+
+    &:hover {
+      .card__inner {
+        transform: scale(1);
+      }
+    }
+  }
+  
+  &.is-inactive {
+    .card__inner {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    
+    &:hover {
+      .card__inner {
+        background-color: $gray;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+
+.alertMessage {
+  background-color: #f44336; /* Red */
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px 0;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+//Expander Widths
+
+//when 3 cards in a row
+@media screen and (min-width: 992px) {
+
+  .card:nth-of-type(3n+2) .card__expander {
+    margin-left: calc(-100% - 30px);
+  }
+  .card:nth-of-type(3n+3) .card__expander {
+    margin-left: calc(-200% - 60px);
+  }
+  .card:nth-of-type(3n+4) {
+    clear: left;
+  }
+  .card__expander {
+    width: calc(300% + 60px);
+  }
+
+}
+
+/* //when 2 cards in a row */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+  .card:nth-of-type(2n+2) .card__expander {
+    margin-left: calc(-100% - 30px);
+  }
+  .card:nth-of-type(2n+3) {
+    clear: left;
+  }
+  .card__expander {
+    width: calc(200% + 30px);
+  }
+
+}

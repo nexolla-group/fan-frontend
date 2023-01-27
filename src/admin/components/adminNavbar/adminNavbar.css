@@ -1,0 +1,71 @@
+.Navbar {
+  height: 50px;
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  color: #555;
+  position: relative;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.Navbar .wrapper {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Navbar .wrapper .search {
+  display: flex;
+  align-items: center;
+  border: 0.5px solid rgb(188, 200, 219);
+  padding: 3px;
+}
+.Navbar .wrapper .search input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.Navbar .wrapper .search input::-moz-placeholder {
+  font-size: 12px;
+}
+.Navbar .wrapper .search input:-ms-input-placeholder {
+  font-size: 12px;
+}
+.Navbar .wrapper .search input::placeholder {
+  font-size: 12px;
+}
+.Navbar .wrapper .items {
+  display: flex;
+  align-items: center;
+}
+.Navbar .wrapper .items .item {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+.Navbar .wrapper .items .item .icon {
+  font-size: 20px;
+}
+.Navbar .wrapper .items .item .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.Navbar .wrapper .items .item .counter {
+  width: 15px;
+  height: 15px;
+  background-color: #ff4820;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 10px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}/*# sourceMappingURL=adminNavbar.css.map */

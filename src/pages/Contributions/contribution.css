@@ -1,0 +1,33 @@
+.contribution-form {
+    width: 80%; 
+    margin: 0 auto; 
+   display: flex;
+   flex-direction: column;
+  }
+  
+  .form-input {
+    /* display: flex;  */
+    flex-wrap: wrap; 
+    margin-bottom: 20px; 
+  }
+  
+  .form-input label {
+    width: 20%; 
+    margin-right: 10px; 
+  }
+  
+  .form-input input,
+  .form-input textarea {
+    width: 100%; 
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+
+  @media screen and (min-width: 600px) {
+    .form-input textarea {
+      height: 80px;
+    }
+  }
+  

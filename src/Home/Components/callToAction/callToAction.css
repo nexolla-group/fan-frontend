@@ -1,0 +1,74 @@
+.platform__callToAction{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 2rem;
+    margin: 4rem;
+    border-radius: 1rem;
+    background: var(--gradient-bar);
+    font-family: var(--font-family);
+    
+
+}
+.platform__calltoAction-content p{
+   font-weight: 700;
+   font-size: 12px;
+   line-height: 30px;
+   color: #0e0e0e;
+}
+.platform__calltoAction-content h3{
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-style: 34px;
+    line-height: 45px;
+    color: #000000;
+}
+.platform__callToAction-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+}
+.platform__callToAction-button button{
+    background:#000000;
+    border-radius: 40px;
+    color: #fff;
+    padding: 0.3rem 1rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: 50px;
+    min-width: 150px;
+}
+
+
+@media screen and (max-width:650px){
+    .platform__callToAction{
+        flex-direction: column;
+    }
+    .platform__callToAction-button{
+        width: 100%;
+        padding: 1rem;
+        margin: 2rem 0 0;
+    }
+    .platform__callToAction-button button{
+        width: 100%;
+        padding: 0.5rem 1rem;
+    }
+}
+@media screen and (max-width:550px){
+    .platform__callToAction{
+        margin-right: 4rem 2rem;
+    }
+    .platform__calltoAction-content h3{
+        font-size: 18px;
+        line-height: 32px;
+    }
+    .platform__calltoAction-content-button button{
+        font-size: 14px;
+        line-height: 28px;
+    }
+}

@@ -1,0 +1,7 @@
+.reactSlickContainer{
+    font-family: var(--font-family);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+}

@@ -1,0 +1,12 @@
+.listGroup {
+  box-shadow: rgba(231, 231, 235, 0.1) 0px 1px 0px;
+  list-style: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  /* background-color: #e2e2e2; */
+  margin-right: 20px;
+  background-color: var(--color-footer);
+  color: #fff;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}

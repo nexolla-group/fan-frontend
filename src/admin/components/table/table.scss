@@ -1,0 +1,22 @@
+.Table{
+    .status{
+        padding: 5px;
+        border-radius: 2px;
+        font-weight: 800;
+        font-size: 14px;
+        padding: 0 1rem;
+
+        &.success{
+            color: gree;
+            background-color: rgb(83, 110, 83);
+        }
+        &.pending{
+            color: goldenrod;
+            background-color: rgb(196, 206, 108);
+        }
+        &.fail{
+            color:red;
+            background-color: rgb(223, 151, 151);
+        }
+    }
+}

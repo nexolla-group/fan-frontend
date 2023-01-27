@@ -1,0 +1,19 @@
+.Table .status {
+  padding: 5px;
+  border-radius: 2px;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 0 1rem;
+}
+.Table .status.success {
+  color: gree;
+  background-color: rgb(83, 110, 83);
+}
+.Table .status.pending {
+  color: goldenrod;
+  background-color: rgb(196, 206, 108);
+}
+.Table .status.fail {
+  color: red;
+  background-color: rgb(223, 151, 151);
+}/*# sourceMappingURL=table.css.map */
