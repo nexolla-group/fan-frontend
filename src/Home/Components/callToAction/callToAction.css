@@ -25,19 +25,19 @@
     color: #000000;
 }
 .platform__callToAction-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 2rem;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-left: 2rem !important;
 }
-.platform__callToAction-button button{
+.platform__callToAction-button .button{
     background:#000000;
     border-radius: 40px;
-    color: #fff;
-    padding: 0.3rem 1rem;
+    color: #fff !important;
+    padding: 0.3rem 1rem !important;
     cursor: pointer;
     border: none;
-    outline: none;
+    outline: none !important;
     font-family: var(--font-family);
     font-size: 18px;
     line-height: 50px;
