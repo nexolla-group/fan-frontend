@@ -11,17 +11,22 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import AdminNavbar from "../adminNavbar/AdminNavbar";
 import Sidebar from "../sidebar/Sidebar";
 
 export default function Transactions() {
+  const { token } = useSelector((state) => state.user);
   const [transactions, setTransacions] = useState([]);
 
   const fetchTransactions = () => {
     axios
-      .get(process.env.REACT_APP_BACKEND_URL + "/api/transactions/")
+      .get(
+        process.env.REACT_APP_BACKEND_URL + "/api/transactions/?token=" + token
+      )
       .then((res) => {
         setTransacions(res.data.transactions);
+        console.log("Transactions", res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -128,7 +133,7 @@ export default function Transactions() {
                         align='left'
                         style={{ padding: "10px 15px", fontSize: "16px" }}
                       >
-                        {row.groupId.groupName}
+                        {row?.groupId?.groupName}
                       </TableCell>
                       <TableCell
                         align='left'

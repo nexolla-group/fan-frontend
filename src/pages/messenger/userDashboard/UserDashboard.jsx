@@ -6,7 +6,7 @@ import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import axios from "axios";
 import Featured from "../../../admin/components/featuresChart/Featured";
-import { toastMessage } from "../../../helpers";
+import { errorHandler, toastMessage } from "../../../helpers";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 
@@ -17,8 +17,6 @@ const UserDashboard = () => {
   const [amount, setAmount] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
-  const [task, setTask] = useState([]);
-  const [currentTask, setCurrentTask] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [group, setGroup] = useState({});
@@ -33,22 +31,16 @@ const UserDashboard = () => {
           token
       )
       .then((res) => {
-        console.log("res", res.data);
         setGroup(res.data.group);
       })
 
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        errorHandler(error);
+      });
   };
   useEffect(() => {
     fetchTarget();
   }, [groupId]);
-
-  useEffect(() => {
-    // const last = task.length - 1;
-    // if (last > 0) {
-    //   setCurrentTask(task[last]);
-    // }
-  }, [task]);
 
   const percentage = 66;
   const handleSubmit = async (e) => {
@@ -93,11 +85,11 @@ const UserDashboard = () => {
               senderName: fullNames,
               telephoneNumber: phoneNumber,
               address,
-              token,
             };
+            console.log("DATA TO SAVE", data);
             const localSave = await axios.post(
-              process.env.REACT_APP_BACKEND_URL + "/api/transactions/",
-              { data }
+              process.env.REACT_APP_BACKEND_URL + "/api/transactions",
+              data
             );
             console.log(
               "+++++++++++dutanze komnde yo kubika transaction++++++++++++++"
@@ -123,6 +115,7 @@ const UserDashboard = () => {
             }
           } else {
             console.log("payment to oltranz error");
+            setLoading(false);
           }
         } else {
           toastMessage("error", "Network error");
@@ -132,19 +125,6 @@ const UserDashboard = () => {
         setLoading(false);
       }
     }
-
-    // axios
-    //   .post(process.env.REACT_APP_BACKEND_URL + "/api/transactions/", {
-    //     transactionId: uuidv4(),
-    //     amount,
-    //     transactionStatus: "SUCCESS",
-    //     senderName: fullNames,
-    //     telephoneNumber: phoneNumber,
-    //     address,
-    //     task: currentTask.id,
-    //   })
-    //   .then((res) => {})
-    //   .catch((error) => {});
   };
 
   return (
