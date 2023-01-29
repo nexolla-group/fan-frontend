@@ -57,9 +57,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<HomePage />} />
+        <Route exact path='/' element={<HomePage />} />
         <Route
-          path="/login"
+          path='/login'
           element={
             <UnProtectedRoute>
               <Login />
@@ -67,7 +67,7 @@ function App() {
           }
         />
         <Route
-          path="/register"
+          path='/register'
           element={
             <UnProtectedRoute>
               <Register />
@@ -75,7 +75,7 @@ function App() {
           }
         />
         <Route
-          path="/messenger"
+          path='/messenger'
           element={
             <ProtectedRoute>
               <Messenger />
@@ -83,7 +83,7 @@ function App() {
           }
         />
         <Route
-          path="/userprofile"
+          path='/userprofile'
           element={
             <ProtectedRoute>
               <UserProfile />
@@ -91,7 +91,7 @@ function App() {
           }
         />
         <Route
-          path="/chatbox"
+          path='/chatbox'
           element={
             <ProtectedRoute>
               <ChatBox />
@@ -99,7 +99,7 @@ function App() {
           }
         />
         <Route
-          path="/contributions/:groupId"
+          path='/contributions/:groupId'
           element={
             <ProtectedRoute>
               <UserDashboard />
@@ -107,7 +107,7 @@ function App() {
           }
         />
         <Route
-          path="/userHome"
+          path='/userHome'
           element={
             <ProtectedRoute>
               <Contributions />
@@ -115,7 +115,7 @@ function App() {
           }
         />
         <Route
-          path="/profile/:username"
+          path='/profile/:username'
           element={
             <ProtectedRoute>
               <Profile />
@@ -123,7 +123,7 @@ function App() {
           }
         />
         <Route
-          path="/logout"
+          path='/logout'
           element={
             <ProtectedRoute>
               <Logout />
@@ -131,7 +131,7 @@ function App() {
           }
         />
         <Route
-          path="/groups"
+          path='/groups'
           element={
             <ProtectedRoute>
               <AvairableGroups />
@@ -141,7 +141,7 @@ function App() {
 
         {/* Admin Routes */}
         <Route
-          path="/admin"
+          path='/admin'
           element={
             <ProtectedRoute>
               <AdminDashboard />
@@ -149,7 +149,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/Dashboard"
+          path='/admin/Dashboard'
           element={
             <ProtectedRoute>
               <AdminDashboard />
@@ -157,7 +157,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/transactions"
+          path='/admin/transactions'
           element={
             <ProtectedRoute>
               <Transactions />
@@ -165,7 +165,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/posts"
+          path='/admin/posts'
           element={
             <ProtectedRoute>
               <Posts />
@@ -173,7 +173,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/fixtures"
+          path='/admin/fixtures'
           element={
             <ProtectedRoute>
               <Feaxtures />
@@ -181,7 +181,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/users"
+          path='/admin/users'
           element={
             <ProtectedRoute>
               <Users />
@@ -189,18 +189,10 @@ function App() {
           }
         />
         <Route
-          path="/admin/groups"
+          path='/admin/groups'
           element={
             <ProtectedRoute>
               <Group />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/tasks"
-          element={
-            <ProtectedRoute>
-              <Tasks />
             </ProtectedRoute>
           }
         />

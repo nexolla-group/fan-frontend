@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const UnProtectedRoute = ({ children }) => {
-  const { token } = useSelector((state) => state.user);
+  const { token, role } = useSelector((state) => state.user);
   return !token || token.trim() === "" ? (
     children
+  ) : role == "user" ? (
+    <Navigate to='/messenger' />
   ) : (
-    <Navigate to="/messenger" />
+    <Navigate to='/admin' />
   );
 };
 

@@ -45,11 +45,11 @@ export default function Login() {
         dispatch(setJoinedGroups(res.data.joinedGroups));
         dispatch(setRole(res.data.role));
         dispatch(setToken(res.data.token));
-
-        res.data.role === "admin"
-          ? (window.location = "/admin")
-          : navigate("/messenger");
+        // res.data.role == "admin"
+        //   ? (window.location = "/admin")
+        //   : navigate("/messenger");
         setIsFetching(false);
+        console.log("Iyo role irihe", res.data.role);
       })
       .catch((error) => {
         errorHandler(error.response.data);

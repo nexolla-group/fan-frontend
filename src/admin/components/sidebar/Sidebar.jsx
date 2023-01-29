@@ -18,10 +18,6 @@ const links = [
         icon: <AiOutlineAppstore />,
       },
       {
-        name: "Tasks",
-        icon: <AiOutlineAppstore />,
-      },
-      {
         name: "Groups",
         icon: <AiOutlineAppstore />,
       },
@@ -29,7 +25,7 @@ const links = [
   },
 
   {
-    title: "Posts",
+    // title: "Posts",
     links: [
       {
         name: "Transactions",
