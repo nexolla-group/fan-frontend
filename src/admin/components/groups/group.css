@@ -1,3 +1,25 @@
+.tasks {
+  margin: 20px;
+}
+.headt {
+  background-color: black;
+  height: 70px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bodyt {
+  background-color: bisque;
+  color: var(--color-footer);
+  margin-top: 50px;
+}
+.bodyt-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
 .addIcon {
   background-color: #000;
   color: #fff;

@@ -85,6 +85,7 @@ const UserDashboard = () => {
               senderName: fullNames,
               telephoneNumber: phoneNumber,
               address,
+              token,
             };
             console.log("DATA TO SAVE", data);
             const localSave = await axios.post(
@@ -170,6 +171,7 @@ const UserDashboard = () => {
                   type='text'
                   className='form-control'
                   maxLength={10}
+                  value={phoneNumber}
                   placeholder='enter the phone number you want to use for Mobile Money payment'
                   onChange={(e) => setPhoneNumber(e.target.value)}
                 />

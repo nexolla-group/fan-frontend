@@ -113,7 +113,7 @@ export default function Transactions() {
                       </TableCell>
                       <TableCell
                         align='left'
-                        style={{ padding: "10px 15px", fontSize: "16px" }}
+                        style={{ padding: "10px 15px", fontSize: "12px" }}
                       >
                         {row.transactionId}
                       </TableCell>
