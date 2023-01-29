@@ -27,6 +27,7 @@ export default function Login() {
   const navigate = useNavigate();
   const handleClick = (e) => {
     e.preventDefault();
+    setIsFetching(true);
     axios
       .post(process.env.REACT_APP_BACKEND_URL + "/api/auth/login/", {
         username,
@@ -48,61 +49,62 @@ export default function Login() {
         res.data.role === "admin"
           ? (window.location = "/admin")
           : navigate("/messenger");
+        setIsFetching(false);
       })
       .catch((error) => {
         errorHandler(error.response.data);
-
+        setIsFetching(false);
         //error handler
       });
   };
   return (
-    <div className="login p-2 ">
-      <div className=" ">
-        <div className="row">
-          <div className="col col-12">
+    <div className='login p-2 '>
+      <div className=' '>
+        <div className='row'>
+          <div className='col col-12'>
             <h1
               style={{ color: "var(--color-footer)" }}
-              className="text-center fw-bold mb-4"
+              className='text-center fw-bold mb-4'
             >
               Login
             </h1>
           </div>
-          <div className="col">
-            <form className="loginBox" onSubmit={handleClick}>
+          <div className='col'>
+            <form className='loginBox' onSubmit={handleClick}>
               <input
-                type="text"
-                placeholder="Username"
-                className="loginInput"
+                type='text'
+                placeholder='Username'
+                className='loginInput'
                 required
                 value={username}
                 onChange={(e) => setusername(e.target.value)}
               />
               <input
-                type="password"
-                placeholder="Password"
-                className="loginInput"
+                type='password'
+                placeholder='Password'
+                className='loginInput'
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button
-                type="submit"
-                className="loginButton btn btn-primary"
+                type='submit'
+                className='loginButton btn btn-primary'
                 disabled={isFetching}
               >
-                {isFetching ? <CircularProgress className="lgn" /> : "Log In"}
+                {isFetching ? <CircularProgress className='lgn' /> : "Log In"}
               </button>
-              <span className="loginForgot">Forgot Password?</span>
+              <span className='loginForgot'>Forgot Password?</span>
               <Link to={"/register"}>
                 <button
-                  type="button"
-                  className="loginButton btn btn-outline-success"
+                  type='button'
+                  className='loginButton btn btn-outline-success'
                 >
                   Create account
                 </button>
               </Link>
-              <Link to="/">
-                <button className="loginButton btn btn-light">Back</button>
+              <Link to='/'>
+                <button className='loginButton btn btn-light'>Back</button>
               </Link>
             </form>
           </div>
