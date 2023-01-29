@@ -1,5 +1,6 @@
 import React from "react";
 import "./callToAction.css";
+import { Link, NavLink } from "react-router-dom";
 
 const CallToAction = () => {
   return (
@@ -11,7 +12,9 @@ const CallToAction = () => {
         </h3>
       </div>
       <div className="platform__callToAction-button">
-        <button type="button">Get Started</button>
+        <a href="/login" className="button" type="button">
+          Get Started
+        </a>
       </div>
     </div>
   );

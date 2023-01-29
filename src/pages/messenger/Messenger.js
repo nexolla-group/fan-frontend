@@ -1,6 +1,6 @@
+import React, { useState, useEffect } from "react";
 import { Container, Grid } from "@mui/material";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllGroupsMessages } from "../../actions/messages";
 import { handleAuthError } from "../../helpers";
@@ -13,21 +13,33 @@ import userProfilePic from "../../assets/admin.jpg";
 import InfoBar from "./infobar/InfoBar";
 import Input from "./input/Input";
 import ChatBox from "./Chatbox/ChatBox";
+import SentimentDissatisfiedOutlinedIcon from "@mui/icons-material/SentimentDissatisfiedOutlined";
 
 function Messenger() {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.user);
   const [myGroups, setMygroups] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [weHaveGroups, setWeHaveGroups] = useState(true);
 
   const fetchMygroups = () => {
     axios
       .get(process.env.REACT_APP_BACKEND_URL + "/api/groups/?token=" + token)
       .then((res) => {
-        console.log("suppose ro return groups", res);
-        setMygroups(res.data.groups);
+        // console.log("suppose ro return groups", res);
+
+        if (res.data.groups.length === 0) {
+          setIsLoading(false);
+          setWeHaveGroups(false);
+        } else {
+          setIsLoading(false);
+          setMygroups(res.data.groups);
+        }
       })
-      .catch((error) => handleAuthError(error));
+      .catch((error) => {
+        handleAuthError(error);
+      });
   };
 
   useEffect(() => {
@@ -41,13 +53,28 @@ function Messenger() {
 
       <div className="outerContainer">
         <div className="groupList">
-          <h3>Group Lists</h3>
+          <h3>Joined Group Lists</h3>
 
-          <GroupsList
-            selectedGroup={selectedGroup}
-            setSelectedGroup={setSelectedGroup}
-            myGroups={myGroups}
-          />
+          {isLoading ? (
+            <>
+              <p className="listGroup">Please Wait...</p>
+            </>
+          ) : (
+            <>
+              {weHaveGroups ? (
+                <GroupsList
+                  selectedGroup={selectedGroup}
+                  setSelectedGroup={setSelectedGroup}
+                  myGroups={myGroups}
+                />
+              ) : (
+                <p className="listGroup bg-danger shadow fw-bold">
+                  <SentimentDissatisfiedOutlinedIcon />
+                  You haven't joined any group yet!
+                </p>
+              )}
+            </>
+          )}
         </div>
 
         <div className="msgcontainer">

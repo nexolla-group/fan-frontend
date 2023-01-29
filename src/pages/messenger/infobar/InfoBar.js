@@ -9,10 +9,8 @@ const InfoBar = ({ selectedGroup }) => {
     <div className="infoBar">
       <div className="leftInnerContainer">
         <div>
-          <h3 className="groupDescription">
-            {selectedGroup?.groupDetails?.groupName}
-          </h3>
-          {/* <p className='groupDsc'>Description</p> */}
+          <h3>{selectedGroup?.groupDetails?.groupName}</h3>
+          <p className="groupDsc">{selectedGroup?.groupDetails?.description}</p>
         </div>
       </div>
       <div className="rightInnerContainer">

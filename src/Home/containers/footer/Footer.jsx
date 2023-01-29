@@ -5,13 +5,13 @@ import platformLogo from "../../../assets/SunriseLogo.png";
 const Footer = () => {
   return (
     <div className="platform__footer section__padding">
-      <div className="platform__footer-heading">
+      {/* <div className="platform__footer-heading">
         <h1 className="gradient__text">
           Do you want to step into the future Fan club member?
         </h1>
-      </div>
-      <div className="platform__footer-contactus-form" id="contact-us">
-        <form action="">
+      </div> */}
+      {/* <div className="platform__footer-contactus-form" id="contact-us">
+        <div>
           <input
             type="email"
             placeholder="your email ex: name@gmail.com"
@@ -32,8 +32,8 @@ const Footer = () => {
             value="send"
             className="platform__footer-contactus-form_submit"
           />
-        </form>
-      </div>
+        </div>
+      </div> */}
       <div className="platform__footer-links">
         <div className="platform__footer-links_logo">
           <img src={platformLogo} alt="logo" />
