@@ -57,7 +57,15 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path='/' element={<HomePage />} />
+        <Route
+          exact
+          path='/'
+          element={
+            <UnProtectedRoute>
+              <HomePage />
+            </UnProtectedRoute>
+          }
+        />
         <Route
           path='/login'
           element={
