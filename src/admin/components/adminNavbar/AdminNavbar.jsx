@@ -13,35 +13,29 @@ import { Link, NavLink } from "react-router-dom";
 
 const AdminNavbar = () => {
   return (
-    <div className="Navbar">
-      <div className="wrapper">
-        <div className="search">
-          <input type="search" placeholder="Search..." />
+    <div className='Navbar'>
+      <div className='wrapper'>
+        <div className='search'>
+          <input type='search' placeholder='Search...' />
           <SearchRoundedIcon />
         </div>
-        <div className="items">
-          <div className="item">
-            <LanguageRoundedIcon className="icon" />
+        <div className='items'>
+          <div className='item'>
+            <FullscreenExitOutlinedIcon className='icon' />
           </div>
-          <div className="item">
-            <DarkModeOutlinedIcon className="icon" />
+          <div className='item'>
+            <NotificationsNoneRoundedIcon className='icon' />
+            <div className='counter'>17</div>
           </div>
-          <div className="item">
-            <FullscreenExitOutlinedIcon className="icon" />
+          <div className='item'>
+            <ChatBubbleOutlineRoundedIcon className='icon' />
+            <div className='counter'>2</div>
           </div>
-          <div className="item">
-            <NotificationsNoneRoundedIcon className="icon" />
-            <div className="counter">17</div>
+          <div className='item'>
+            <FormatListBulletedOutlinedIcon className='icon' />
           </div>
-          <div className="item">
-            <ChatBubbleOutlineRoundedIcon className="icon" />
-            <div className="counter">2</div>
-          </div>
-          <div className="item">
-            <FormatListBulletedOutlinedIcon className="icon" />
-          </div>
-          <div className="item">
-            <img src={profilePic} alt="" className="avatar" />
+          <div className='item'>
+            <img src={profilePic} alt='' className='avatar' />
           </div>
         </div>
       </div>

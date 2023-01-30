@@ -27,8 +27,6 @@ function Messenger() {
     axios
       .get(process.env.REACT_APP_BACKEND_URL + "/api/groups/?token=" + token)
       .then((res) => {
-        // console.log("suppose ro return groups", res);
-
         if (res.data.groups.length === 0) {
           setIsLoading(false);
           setWeHaveGroups(false);
@@ -51,13 +49,13 @@ function Messenger() {
     <>
       <Navbar />
 
-      <div className="outerContainer">
-        <div className="groupList">
+      <div className='outerContainer'>
+        <div className='groupList'>
           <h3>Joined Group Lists</h3>
 
           {isLoading ? (
             <>
-              <p className="listGroup">Please Wait...</p>
+              <p className='listGroup'>Please Wait...</p>
             </>
           ) : (
             <>
@@ -68,7 +66,7 @@ function Messenger() {
                   myGroups={myGroups}
                 />
               ) : (
-                <p className="listGroup bg-danger shadow fw-bold">
+                <p className='listGroup bg-danger shadow fw-bold'>
                   <SentimentDissatisfiedOutlinedIcon />
                   You haven't joined any group yet!
                 </p>
@@ -77,7 +75,7 @@ function Messenger() {
           )}
         </div>
 
-        <div className="msgcontainer">
+        <div className='msgcontainer'>
           {selectedGroup.groupId && <InfoBar selectedGroup={selectedGroup} />}
 
           {/* <GroupMessages selectedGroup={selectedGroup} /> */}

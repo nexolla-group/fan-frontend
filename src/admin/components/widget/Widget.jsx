@@ -6,11 +6,11 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import CelebrationOutlinedIcon from "@mui/icons-material/CelebrationOutlined";
 import SignpostOutlinedIcon from "@mui/icons-material/SignpostOutlined";
 
-const Widget = ({ type }) => {
+const Widget = ({ type, amount }) => {
   let data;
 
   // temporary while waiting jean demo to fetch some data from the backend database
-  const amount = 16700;
+
   const diff = 23.8;
 
   switch (type) {

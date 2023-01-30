@@ -49,11 +49,10 @@ export default function Login() {
         //   ? (window.location = "/admin")
         //   : navigate("/messenger");
         setIsFetching(false);
-        console.log("Iyo role irihe", res.data.role);
       })
       .catch((error) => {
-        errorHandler(error.response.data);
         setIsFetching(false);
+        errorHandler(error.response.data);
         //error handler
       });
   };
@@ -66,7 +65,7 @@ export default function Login() {
               style={{ color: "var(--color-footer)" }}
               className='text-center fw-bold mb-4'
             >
-              Login
+              Sign in
             </h1>
           </div>
           <div className='col'>

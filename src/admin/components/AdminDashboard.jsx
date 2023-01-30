@@ -41,7 +41,7 @@ const AdminDashboard = () => {
         <div className='homeContainer'>
           <AdminNavbar />
           <div className='widgets'>
-            <Widget type='user' />
+            <Widget type='user' amount={users.length} />
             <Widget type='balance' />
             <Widget type='posts' />
           </div>
