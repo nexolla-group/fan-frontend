@@ -7,7 +7,7 @@ import AdminNavbar from "./adminNavbar/AdminNavbar";
 import Featured from "./featuresChart/Featured";
 import Chart from "./normalChart/Chart";
 import Sidebar from "./sidebar/Sidebar";
-import DataTable from "./table/DataTable";
+
 import Widget from "./widget/Widget";
 
 const AdminDashboard = () => {
@@ -42,8 +42,9 @@ const AdminDashboard = () => {
           <AdminNavbar />
           <div className='widgets'>
             <Widget type='user' amount={users.length} />
-            <Widget type='balance' />
+            <Widget type='transactions' />
             <Widget type='posts' />
+            <Widget type='groups' />
           </div>
           <div className='charts-container'>
             <Featured />
