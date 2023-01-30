@@ -21,7 +21,7 @@ const Widget = ({ type }) => {
         link: "view all users",
         icon: (
           <PersonOutlineOutlinedIcon
-            className="icon"
+            className='icon'
             style={{ color: "#fff", backgroundColor: "var(--color-bg)" }}
           />
         ),
@@ -34,7 +34,7 @@ const Widget = ({ type }) => {
         link: "view all fans",
         icon: (
           <PersonOutlineOutlinedIcon
-            className="icon"
+            className='icon'
             style={{ color: "#fff", backgroundColor: "var(--color-text)" }}
           />
         ),
@@ -47,7 +47,7 @@ const Widget = ({ type }) => {
         link: "view all earnings",
         icon: (
           <AccountBalanceWalletOutlinedIcon
-            className="icon"
+            className='icon'
             style={{ color: "#fff", backgroundColor: "green" }}
           />
         ),
@@ -60,7 +60,7 @@ const Widget = ({ type }) => {
         link: "view all more",
         icon: (
           <AccountBalanceWalletOutlinedIcon
-            className="icon"
+            className='icon'
             style={{ color: "#fff", backgroundColor: "green" }}
           />
         ),
@@ -73,7 +73,7 @@ const Widget = ({ type }) => {
         link: "view all posts",
         icon: (
           <SignpostOutlinedIcon
-            className="icon"
+            className='icon'
             style={{ color: "#fff", backgroundColor: "green" }}
           />
         ),
@@ -84,16 +84,16 @@ const Widget = ({ type }) => {
   }
 
   return (
-    <div className="widget">
-      <div className="left">
-        <span className="title">{data.title}</span>
-        <span className="counter">
+    <div className='widget'>
+      <div className='left'>
+        <span className='title'>{data.title}</span>
+        <span className='counter'>
           {amount} {data.isMoney && "Rwf"}
         </span>
-        <span className="link">{data.link}</span>
+        <span className='link'>{data.link}</span>
       </div>
-      <div className="right">
-        <div className="percentage positive">
+      <div className='right'>
+        <div className='percentage positive'>
           <ExpandLessOutlinedIcon />
           {diff}%
         </div>

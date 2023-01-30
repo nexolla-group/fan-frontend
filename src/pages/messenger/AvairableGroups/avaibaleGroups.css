@@ -1,41 +1,9 @@
-.button-92 {
-  --c: #fff;
-  /* text color */
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 33%, rgba(255, 255, 255, 0.3333333333), rgba(0, 0, 0, 0) 67%) var(--_p, 100%)/300% no-repeat, var(--color-footer);
-  /* background color */
-  color: rgba(0, 0, 0, 0);
-  border: none;
-  transform: perspective(500px) rotateY(calc(20deg * var(--_i, -1)));
-  text-shadow: calc(var(--_i, -1) * 0.08em) -0.01em 0 var(--c), calc(var(--_i, -1) * -0.08em) 0.01em 2px rgba(0, 0, 0, 0.2666666667);
-  outline-offset: 0.1em;
-  transition: 0.3s;
-}
-
-.button-92:hover,
-.button-92:focus-visible {
-  --_p: 0%;
-  --_i: 1;
-}
-
-.button-92:active {
-  text-shadow: none;
-  color: var(--c);
-  box-shadow: inset 0 0 9000000000q rgba(0, 0, 0, 0.3333333333);
-  transition: 0s;
-}
-
-.button-92 {
-  font-weight: bold;
-  font-size: 18px;
-  margin: 0;
-  cursor: pointer;
-  padding: 0.1em 0.3em;
-}
-
 .groupDesc {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border: 2px solid #e3e3e3;
+  margin-bottom: 5px;
 }
 
 .wrapper {
@@ -153,6 +121,34 @@
   transform: scale(1);
 }
 
+.alertMessage {
+  background-color: #f44336; /* Red */
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px 0;
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @media screen and (min-width: 992px) {
   .card:nth-of-type(3n+2) .card__expander {
     margin-left: calc(-100% - 30px);
