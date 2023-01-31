@@ -132,9 +132,9 @@ const UserDashboard = () => {
     <>
       <Navbar />
       <div className="userDashboard d-flex">
-        <div className="profile-main " style={{ flex: 5 }}>
+        <div className="profile-main p-4" style={{ flex: 5 }}>
           <div className="profile-description">
-            <h2>fill the form below to make contribution</h2>
+            <h2>Fill the form below to make contribution</h2>
             <form className="row g-3" onSubmit={handleSubmit}>
               <div className="col-md-6">
                 <label htmlFor="Sender" className="form-label">

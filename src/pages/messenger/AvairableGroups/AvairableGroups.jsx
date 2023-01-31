@@ -12,6 +12,7 @@ const AvairableGroups = () => {
   const [joinedGroup, setJoinedGroup] = useState([]);
   const { token, id } = useSelector((state) => state.user);
   const [joining, setJoining] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchJoinedGroup = () => {
     axios
@@ -28,6 +29,7 @@ const AvairableGroups = () => {
         process.env.REACT_APP_BACKEND_URL + "/api/groups/all/?token=" + token
       )
       .then((res) => {
+        setIsLoading(true);
         setGroup(res.data.data);
       })
       .catch((error) => console.log(error));
@@ -76,7 +78,7 @@ const AvairableGroups = () => {
     <>
       <Navbar />
       <div className="container-fluid">
-        {groups.length !== 0 ? (
+        {isLoading ? (
           <>
             <div className="wrapper">
               <div className="header">
@@ -120,12 +122,8 @@ const AvairableGroups = () => {
           </>
         ) : (
           <>
-            <div className="alertMessage">
-              <p>
-                We apologize, there are currently no groups available. Please
-                wait for the administration of the Sunrise Football Club to
-                create one.
-              </p>
+            <div className="alertMessage m-10">
+              <p>Please Wait...</p>
             </div>
           </>
         )}
