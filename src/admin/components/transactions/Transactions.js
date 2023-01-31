@@ -89,33 +89,28 @@ export default function Transactions() {
 
   return (
     <>
-      <div className='Home'>
+      <div className="Home">
         <Sidebar />
-        <div className='homeContainer'>
+        <div className="homeContainer">
           <AdminNavbar />
-          <div className='tasks'>
-            <div className='headt'>
+          <div className="tasks">
+            <div className="headt">
               <Typography
-                variant='h3'
-                component='h3'
+                variant="h3"
+                component="h3"
                 sx={{ textAlign: "center", mt: 3, mb: 3 }}
               >
                 Manage Transactions
               </Typography>
             </div>
-            <div className='bodyt'>
-              <div className='bodyt-header'>
-                <div className='leftHeader'></div>
-                <div className='rightHeader'>####</div>
+            <div className="bodyt">
+              <div className="bodyt-header">
+                <div className="leftHeader"></div>
+                <div className="rightHeader">####</div>
               </div>
               <TableContainer component={Paper}>
-<<<<<<< HEAD
-                <Box sx={{ height: 600, width: "100%" }}>
-                  <div style={{ height: 500, width: "100%" }}>
-=======
                 <Box sx={{ width: "100%" }}>
                   <div style={{ height: 400, width: "100%" }}>
->>>>>>> 4132487e3ca1ea9e5961af795789bcbc6ca3393b
                     <DataGrid
                       rows={transactions}
                       columns={columns}
