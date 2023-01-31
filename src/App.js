@@ -35,6 +35,7 @@ import ChatBox from "./pages/messenger/Chatbox/ChatBox";
 import UserProfile from "./pages/UserProfiles/UserProfile";
 import ContributionsProgress from "./admin/components/contributions/ContributionsProgress";
 import UserTransactions from "./admin/components/transactions/UserTransactions";
+import PrintUserTransactions from "./admin/components/transactions/PrintUserTransactions";
 
 function App() {
   const dispatch = useDispatch();
@@ -90,6 +91,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Messenger />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/printuserTransactions"
+          element={
+            <ProtectedRoute>
+              <PrintUserTransactions />
             </ProtectedRoute>
           }
         />
