@@ -10,7 +10,7 @@ import { kFormatter } from "../../../helpers";
 
 const Featured = ({ group }) => {
   //progressbar percentages to react admin's target
-  const halfTarget = group.target / 2;
+  // const halfTarget = group.target / 2;
   return (
     <div className="featured">
       <div className="top">
