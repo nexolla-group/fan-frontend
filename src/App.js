@@ -1,4 +1,5 @@
 import UserHome from "./pages/userHome/UserHome";
+
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
@@ -32,6 +33,7 @@ import Contributions from "./pages/messenger/contributioins/Contributions";
 import UserDashboard from "./pages/messenger/userDashboard/UserDashboard";
 import ChatBox from "./pages/messenger/Chatbox/ChatBox";
 import UserProfile from "./pages/UserProfiles/UserProfile";
+import ContributionsProgress from "./admin/components/contributions/ContributionsProgress";
 
 function App() {
   const dispatch = useDispatch();
@@ -146,6 +148,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path='/groups'
+          element={
+            <ProtectedRoute>
+              <AvairableGroups />
+            </ProtectedRoute>
+          }
+        />
 
         {/* Admin Routes */}
         <Route
@@ -201,6 +211,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Group />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path='/admin/progress'
+          element={
+            <ProtectedRoute>
+              <ContributionsProgress />
             </ProtectedRoute>
           }
         />

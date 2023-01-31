@@ -5,12 +5,14 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import CelebrationOutlinedIcon from "@mui/icons-material/CelebrationOutlined";
 import SignpostOutlinedIcon from "@mui/icons-material/SignpostOutlined";
+import { GroupOutlined } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
-const Widget = ({ type }) => {
+const Widget = ({ type, amount }) => {
   let data;
 
   // temporary while waiting jean demo to fetch some data from the backend database
-  const amount = 16700;
+
   const diff = 23.8;
 
   switch (type) {
@@ -21,7 +23,7 @@ const Widget = ({ type }) => {
         link: "view all users",
         icon: (
           <PersonOutlineOutlinedIcon
-            className="icon"
+            className='icon'
             style={{ color: "#fff", backgroundColor: "var(--color-bg)" }}
           />
         ),
@@ -34,7 +36,7 @@ const Widget = ({ type }) => {
         link: "view all fans",
         icon: (
           <PersonOutlineOutlinedIcon
-            className="icon"
+            className='icon'
             style={{ color: "#fff", backgroundColor: "var(--color-text)" }}
           />
         ),
@@ -47,21 +49,21 @@ const Widget = ({ type }) => {
         link: "view all earnings",
         icon: (
           <AccountBalanceWalletOutlinedIcon
-            className="icon"
+            className='icon'
             style={{ color: "#fff", backgroundColor: "green" }}
           />
         ),
       };
       break;
-    case "balance":
+    case "transactions":
       data = {
-        title: "balance",
+        title: "transactions",
         isMoney: true,
         link: "view all more",
         icon: (
           <AccountBalanceWalletOutlinedIcon
-            className="icon"
-            style={{ color: "#fff", backgroundColor: "green" }}
+            className='icon'
+            style={{ color: "#fff", backgroundColor: "lightgreen" }}
           />
         ),
       };
@@ -73,8 +75,21 @@ const Widget = ({ type }) => {
         link: "view all posts",
         icon: (
           <SignpostOutlinedIcon
-            className="icon"
+            className='icon'
             style={{ color: "#fff", backgroundColor: "green" }}
+          />
+        ),
+      };
+      break;
+    case "groups":
+      data = {
+        title: "groups",
+        isMoney: false,
+        link: "view all groups",
+        icon: (
+          <GroupOutlined
+            className='icon'
+            style={{ color: "#fff", backgroundColor: "var(--color-text)" }}
           />
         ),
       };
@@ -84,16 +99,18 @@ const Widget = ({ type }) => {
   }
 
   return (
-    <div className="widget">
-      <div className="left">
-        <span className="title">{data.title}</span>
-        <span className="counter">
-          {amount} {data.isMoney && "Rwf"}
+    <div className='widget'>
+      <div className='left'>
+        <span className='title'>{data.title}</span>
+        <span className='counter'>
+          {amount} {data.isMoney}
         </span>
-        <span className="link">{data.link}</span>
+        <Link to={`/admin/${data.title}`}>
+          <span className='link'>{data.link}</span>
+        </Link>
       </div>
-      <div className="right">
-        <div className="percentage positive">
+      <div className='right'>
+        <div className='percentage positive'>
           <ExpandLessOutlinedIcon />
           {diff}%
         </div>

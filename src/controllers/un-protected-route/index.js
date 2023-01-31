@@ -7,7 +7,7 @@ const UnProtectedRoute = ({ children }) => {
   return !token || token.trim() === "" ? (
     children
   ) : role == "user" ? (
-    <Navigate to='/messenger' />
+    <Navigate to='/userHome' />
   ) : (
     <Navigate to='/admin' />
   );

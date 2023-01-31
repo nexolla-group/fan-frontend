@@ -5,8 +5,8 @@ import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-import axios from "axios";
-import { useEffect } from "react";
+
+import { kFormatter } from "../../../helpers";
 
 const Featured = ({ group }) => {
   //progressbar percentages to react admin's target
@@ -15,7 +15,7 @@ const Featured = ({ group }) => {
     <div className="featured">
       <div className="top">
         <h1 className="title">Total Target Reached</h1>
-        {/* <MoreVertOutlinedIcon fontSize="small" /> */}
+        <MoreVertOutlinedIcon fontSize="small" />
       </div>
       <div className="bottom">
         <div className="featuredChart">
@@ -38,47 +38,34 @@ const Featured = ({ group }) => {
           </CircularProgressbarWithChildren>
         </div>
         <p className="title">Total Contributions made</p>
-        <p className="amount fw-bold text-4">
-          {group?._id && `${group.targetReached} Rwf`}
-        </p>
+        <p className="amount">{group?._id && `${group.targetReached} Rwf`}</p>
         <p className="description">{group?._id && group.description}</p>
         {group?._id && (
           <div className="summary">
             <div className="item">
               <div className="itemTitle">Target</div>
-              <div className="itemResult positive">
-                <KeyboardArrowUpOutlinedIcon fontSize="small" />
-                <div className="resultAmount fw-bold">{group.target}rwf</div>
+              <div className="itemResult negative">
+                <KeyboardArrowDownOutlinedIcon fontSize="small" />
+                <div className="resultAmount">
+                  {kFormatter(group.target)}rwf
+                </div>
               </div>
             </div>
             <div className="item">
-              <div className="itemTitle">Contributions made</div>
-              {halfTarget >= group.target ? (
-                <>
-                  <div className="itemResult text-success">
-                    <KeyboardArrowUpOutlinedIcon fontSize="small" />
-                    <div className="resultAmount fw-bold">
-                      {group.targetReached}rwf
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="itemResult text-danger">
-                    <KeyboardArrowUpOutlinedIcon fontSize="small" />
-                    <div className="resultAmount fw-bold">
-                      {group.targetReached}rwf
-                    </div>
-                  </div>
-                </>
-              )}
+              <div className="itemTitle">balance</div>
+              <div className="itemResult positive">
+                <KeyboardArrowUpOutlinedIcon fontSize="small" />
+                <div className="resultAmount">
+                  {kFormatter(group.targetReached)}rwf
+                </div>
+              </div>
             </div>
             <div className="item">
               <div className="itemTitle">Remaining</div>
               <div className="itemResult positive">
                 <KeyboardArrowUpOutlinedIcon fontSize="small" />
-                <div className="resultAmount fw-bold">
-                  {group.target - group.targetReached}rwf
+                <div className="resultAmount">
+                  {kFormatter(group.target - group.targetReached)}Rwf
                 </div>
               </div>
             </div>

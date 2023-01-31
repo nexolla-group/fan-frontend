@@ -39,7 +39,6 @@ export const fetchAllGroupsMessages = () => (dispatch, getState) => {
     .then((res) => {
       dispatch(setIsLoadingGroupMessages(false));
       dispatch(setAllGroupMessages(res.data.messages));
-      console.log("Supposed to return message", res);
     })
     .catch((error) => {
       dispatch(setIsLoadingGroupMessages(false));

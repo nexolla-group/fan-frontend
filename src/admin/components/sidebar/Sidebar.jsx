@@ -8,6 +8,8 @@ import {
 } from "react-icons/ai";
 import sunriseLogo from "../../../assets/SunriseLogo.png";
 import { Link, NavLink } from "react-router-dom";
+import { DonutSmall, GroupOutlined } from "@mui/icons-material";
+import { LinearProgress } from "@mui/material";
 
 const links = [
   {
@@ -17,23 +19,36 @@ const links = [
         name: "Dashboard",
         icon: <AiOutlineAppstore />,
       },
-      {
-        name: "Groups",
-        icon: <AiOutlineAppstore />,
-      },
     ],
   },
 
   {
-    // title: "Posts",
+    title: "Posts",
     links: [
-      {
-        name: "Transactions",
-        icon: <AiOutlineGlobal />,
-      },
       {
         name: "Posts",
         icon: <AiTwotoneNotification />,
+      },
+      {
+        name: "Users",
+        icon: <AiOutlineAppstore />,
+      },
+    ],
+  },
+  {
+    title: "Groups",
+    links: [
+      {
+        name: "Groups",
+        icon: <GroupOutlined />,
+      },
+      {
+        name: "Progress",
+        icon: <DonutSmall />,
+      },
+      {
+        name: "Transactions",
+        icon: <AiOutlineGlobal />,
       },
       {
         name: "Users",
