@@ -10,7 +10,7 @@ import "./userTransactions.css";
 import { Link } from "react-router-dom";
 
 export default function UserTransactions() {
-  const { token } = useSelector((state) => state.user);
+  const { token, username } = useSelector((state) => state.user);
   const [transactions, setTransacions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -66,21 +66,21 @@ export default function UserTransactions() {
   return (
     <>
       <Navbar />
-      <div className="container-fluid p-5">
-        <div className="row">
-          <div className="col col-md-6">
+      <div className='container-fluid p-5'>
+        <div className='row'>
+          <div className='col col-md-6'>
             <Typography
-              variant="h5"
+              variant='h5'
               mb={2}
               sx={{ textAlign: "Left", fontWeight: 500 }}
             >
               My Contribution History
             </Typography>
           </div>
-          <div className="col col-md-6 text-end">
+          <div className='col col-md-6 text-end'>
             {" "}
             <Typography
-              variant="h5"
+              variant='h5'
               mb={2}
               sx={{ textAlign: "Right", fontWeight: 500 }}
             >
@@ -88,7 +88,7 @@ export default function UserTransactions() {
             </Typography>
           </div>
         </div>
-        <TableContainer component={Paper} className="table">
+        <TableContainer component={Paper} className='table'>
           <Box sx={{ width: "100%" }}>
             <div style={{ height: 700, width: "100%" }}>
               <DataGrid
