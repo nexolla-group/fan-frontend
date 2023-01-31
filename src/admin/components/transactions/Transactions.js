@@ -1,14 +1,4 @@
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Box,
-  Typography,
-} from "@mui/material";
+import { Paper, TableContainer, Box, Typography } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
@@ -19,28 +9,13 @@ import Placehold from "../placeholder";
 import Sidebar from "../sidebar/Sidebar";
 import { DataGrid } from "@mui/x-data-grid";
 import { useMemo } from "react";
-
-const transactionStatusCellRenderer = (params) => {
-  let color;
-  if (params.value === "FAILED") {
-    color = "red";
-  } else if (params.value === "PENDING") {
-    color = "yellow";
-  } else if (params.value === "SUCCESS") {
-    color = "green";
-  }
-
-  return (
-    <div style={{ backgroundColor: color, color: "white", padding: "8px" }}>
-      {params.value}
-    </div>
-  );
-};
+import { Link } from "react-router-dom";
 
 export default function Transactions() {
   const { token } = useSelector((state) => state.user);
   const [transactions, setTransacions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   const fetchTransactions = () => {
     setIsLoading(true);
@@ -58,6 +33,34 @@ export default function Transactions() {
       });
   };
 
+  //search
+  const handleSearchInputChange = (event) => {
+    setSearchInput(event.target.value);
+  };
+
+  const filteredTransactions = transactions.filter((transaction) => {
+    return (
+      transaction.transactionId
+        .toLowerCase()
+        .includes(searchInput.toLowerCase()) ||
+      transaction.senderName
+        .toLowerCase()
+        .includes(searchInput.toLowerCase()) ||
+      transaction.groupId?.groupName
+        .toLowerCase()
+        .includes(searchInput.toLowerCase()) ||
+      transaction.telephoneNumber.toString().includes(searchInput) ||
+      transaction.transactionStatus
+        .toLowerCase()
+        .includes(searchInput.toLowerCase())
+    );
+  });
+
+  const totalAmount = transactions.reduce(
+    (sum, transaction) => sum + transaction.amount,
+    0
+  );
+
   const columns = useMemo(
     () => [
       { field: "transactionId", headerName: "TransactionId", width: 200 },
@@ -68,7 +71,7 @@ export default function Transactions() {
         headerName: "Group Name",
         width: 200,
         renderCell: (item) => {
-          return item.row.groupId.groupName;
+          return item.row.groupId?.groupName;
         },
       },
       { field: "telephoneNumber", headerName: "Telephone Number", width: 200 },
@@ -93,33 +96,57 @@ export default function Transactions() {
         <Sidebar />
         <div className="homeContainer">
           <AdminNavbar />
-          <div className="tasks">
-            <div className="headt">
-              <Typography
-                variant="h3"
-                component="h3"
-                sx={{ textAlign: "center", mt: 3, mb: 3 }}
-              >
-                Manage Transactions
-              </Typography>
-            </div>
-            <div className="bodyt">
-              <div className="bodyt-header">
-                <div className="leftHeader"></div>
-                <div className="rightHeader">####</div>
+          <div className="container-fluid p-5">
+            <div className="row mb-3">
+              <div className="col col-md-6">
+                <Typography
+                  variant="h5"
+                  mb={2}
+                  sx={{ textAlign: "Left", fontWeight: 500 }}
+                >
+                  Sunrise FC | Transactions
+                </Typography>
               </div>
-              <TableContainer component={Paper}>
-                <Box sx={{ width: "100%" }}>
-                  <div style={{ height: 400, width: "100%" }}>
-                    <DataGrid
-                      rows={transactions}
-                      columns={columns}
-                      getRowId={(row) => row._id}
+              <div className="col col-md-6 text-end">
+                <Typography
+                  variant="h5"
+                  mb={2}
+                  sx={{ textAlign: "Right", fontWeight: 500 }}
+                >
+                  Total Contributions Made: {totalAmount} Rwf
+                </Typography>
+              </div>
+            </div>
+            <div className="row mb-3">
+              <div className="col col-md-6">
+                <form>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Search..."
+                      value={searchInput}
+                      onChange={handleSearchInputChange}
                     />
                   </div>
-                </Box>
-              </TableContainer>
+                </form>
+              </div>
             </div>
+            <TableContainer component={Paper} className="table">
+              <Box sx={{ width: "100%" }}>
+                <div style={{ height: 600, width: "100%" }}>
+                  <DataGrid
+                    rows={filteredTransactions}
+                    columns={columns}
+                    getRowId={(row) => row._id}
+                  />
+                </div>
+              </Box>
+            </TableContainer>
+
+            <Link to="/printuserTransactions" target="blank">
+              <button className="btn btn-outline-secondary">Print</button>
+            </Link>
           </div>
         </div>
       </div>

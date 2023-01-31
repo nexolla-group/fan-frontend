@@ -1,6 +1,8 @@
-   @media print {
-      table {
-        font-size: 0.8em;
-        max-width: 100%;
-      }
+@media print {
+    table {
+      display: none;
     }
+    #print-page {
+      display: block;
+    }
+  }

@@ -13,6 +13,7 @@ export default function UserTransactions() {
   const { token, username } = useSelector((state) => state.user);
   const [transactions, setTransacions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   const fetchTransactions = () => {
     setIsLoading(true);
@@ -29,6 +30,29 @@ export default function UserTransactions() {
         console.log(error);
       });
   };
+
+  //search
+  const handleSearchInputChange = (event) => {
+    setSearchInput(event.target.value);
+  };
+
+  const filteredTransactions = transactions.filter((transaction) => {
+    return (
+      transaction.transactionId
+        .toLowerCase()
+        .includes(searchInput.toLowerCase()) ||
+      transaction.senderName
+        .toLowerCase()
+        .includes(searchInput.toLowerCase()) ||
+      transaction.groupId?.groupName
+        .toLowerCase()
+        .includes(searchInput.toLowerCase()) ||
+      transaction.telephoneNumber.toString().includes(searchInput) ||
+      transaction.transactionStatus
+        .toLowerCase()
+        .includes(searchInput.toLowerCase())
+    );
+  });
 
   const columns = useMemo(
     () => [
@@ -55,44 +79,58 @@ export default function UserTransactions() {
     []
   );
 
-  const handlePrint = () => {
-    window.print();
-  };
-
   useEffect(() => {
     fetchTransactions();
   }, []);
 
+  const totalAmount = transactions.reduce(
+    (sum, transaction) => sum + transaction.amount,
+    0
+  );
   return (
     <>
       <Navbar />
-      <div className='container-fluid p-5'>
-        <div className='row'>
-          <div className='col col-md-6'>
+      <div className="container-fluid p-5">
+        <div className="row mb-3">
+          <div className="col col-md-6">
             <Typography
-              variant='h5'
+              variant="h5"
               mb={2}
               sx={{ textAlign: "Left", fontWeight: 500 }}
             >
-              My Contribution History
+              Sunrise FC | Contribution History
             </Typography>
           </div>
-          <div className='col col-md-6 text-end'>
-            {" "}
+          <div className="col col-md-6 text-end">
             <Typography
-              variant='h5'
+              variant="h5"
               mb={2}
               sx={{ textAlign: "Right", fontWeight: 500 }}
             >
-              Total Contributions Made:
+              Total Contributions Made: {totalAmount} Rwf
             </Typography>
           </div>
         </div>
-        <TableContainer component={Paper} className='table'>
+        <div className="row mb-3">
+          <div className="col col-md-6">
+            <form>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Search..."
+                  value={searchInput}
+                  onChange={handleSearchInputChange}
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+        <TableContainer component={Paper} className="table">
           <Box sx={{ width: "100%" }}>
-            <div style={{ height: 700, width: "100%" }}>
+            <div style={{ height: 600, width: "100%" }}>
               <DataGrid
-                rows={transactions}
+                rows={filteredTransactions}
                 columns={columns}
                 getRowId={(row) => row._id}
               />

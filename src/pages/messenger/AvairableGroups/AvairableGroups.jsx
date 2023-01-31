@@ -122,8 +122,9 @@ const AvairableGroups = () => {
           </>
         ) : (
           <>
-            <div className="alertMessage m-10">
-              <p>Please Wait...</p>
+            <div className="wait-container">
+              <div className="wait-animation"></div>
+              <div className="wait-text">Please Wait</div>
             </div>
           </>
         )}

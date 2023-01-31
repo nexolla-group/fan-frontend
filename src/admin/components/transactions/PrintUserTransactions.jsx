@@ -60,6 +60,11 @@ const PrintUserTransactions = () => {
   useEffect(() => {
     fetchTransactions();
   }, []);
+
+  const totalAmount = transactions.reduce(
+    (sum, transaction) => sum + transaction.amount,
+    0
+  );
   return (
     <>
       <div className="container-fluid p-5">
@@ -70,7 +75,7 @@ const PrintUserTransactions = () => {
               mb={2}
               sx={{ textAlign: "Right", fontWeight: 500 }}
             >
-              Total Contributions Made:
+              Total Contributions Made: {totalAmount} Rwf
             </Typography>
           </div>
         </div>

@@ -167,20 +167,46 @@ $turquoise: #1abc9c;
 }
 
 
-.alertMessage {
-  background-color: #f44336; /* Red */
-  color: white;
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
-  margin: 10px 0;
-  animation: fadeIn 1s;
+// Please wait message animations
+.wait-container {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.wait-animation {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #333;
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
 }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.wait-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+
 
 
 //Expander Widths
