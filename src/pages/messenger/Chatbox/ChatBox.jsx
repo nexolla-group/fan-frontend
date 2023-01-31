@@ -80,7 +80,7 @@ const ChatBox = ({ selectedGroup }) => {
                   className="input form-control"
                 />
                 <button type="submit" className="btn btn-success">
-                  {isSubmitting ? "Submitting..." : "Send"}
+                  {isSubmitting ? "Sending..." : "Send"}
                 </button>
               </div>
             </form>
@@ -93,7 +93,7 @@ const ChatBox = ({ selectedGroup }) => {
                 <p>
                   On The group list Click on the group name you have joined to,
                   inorder to open it. or Just look at the top Navigation bar,
-                  click on Groups and join group to start chatting
+                  click on Groups and join group to start chatting.
                 </p>
               </div>
             </div>

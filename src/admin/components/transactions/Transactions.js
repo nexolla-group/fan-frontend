@@ -89,24 +89,24 @@ export default function Transactions() {
 
   return (
     <>
-      <div className='Home'>
+      <div className="Home">
         <Sidebar />
-        <div className='homeContainer'>
+        <div className="homeContainer">
           <AdminNavbar />
-          <div className='tasks'>
-            <div className='headt'>
+          <div className="tasks">
+            <div className="headt">
               <Typography
-                variant='h3'
-                component='h3'
+                variant="h3"
+                component="h3"
                 sx={{ textAlign: "center", mt: 3, mb: 3 }}
               >
                 Manage Transactions
               </Typography>
             </div>
-            <div className='bodyt'>
-              <div className='bodyt-header'>
-                <div className='leftHeader'></div>
-                <div className='rightHeader'>####</div>
+            <div className="bodyt">
+              <div className="bodyt-header">
+                <div className="leftHeader"></div>
+                <div className="rightHeader">####</div>
               </div>
               <TableContainer component={Paper}>
                 <Box sx={{ width: "100%" }}>
