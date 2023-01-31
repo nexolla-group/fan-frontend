@@ -72,7 +72,7 @@ const AdminDashboard = () => {
             <Widget type='groups' amount={groups.length} />
           </div>
           <div className='charts-container'>
-            <Featured />
+            {/* <Featured /> */}
             <Chart />
           </div>
           <div className='listContainer'>

@@ -28,9 +28,11 @@ const style = {
 export default function EditGroup({ open, setOpen, group, fetchGroups }) {
   const [groupName, setGroupName] = useState(group.groupName);
   const [description, setDescription] = useState(group.description);
+  const [loading, setLoading] = useState(false);
 
   const handleClose = () => setOpen(false);
   const handleEdit = () => {
+    setLoading(true);
     axios
       .put(process.env.REACT_APP_BACKEND_URL + "/api/groups/" + group._id, {
         groupName,
@@ -39,10 +41,13 @@ export default function EditGroup({ open, setOpen, group, fetchGroups }) {
       .then((res) => {
         toastMessage("success", "Group is Updated");
         fetchGroups();
+        setLoading(false);
         handleClose();
       })
-      .catch((error) => console.log(error));
-    console.log(group);
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -101,7 +106,7 @@ export default function EditGroup({ open, setOpen, group, fetchGroups }) {
                 marginTop: "1rem",
               }}
             >
-              Update group
+              {loading ? "Updating..." : "Update group"}
             </Button>
           </Typography>
         </Box>
