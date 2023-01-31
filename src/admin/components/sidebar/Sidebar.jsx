@@ -56,38 +56,33 @@ const links = [
 const Sidebar = () => {
   return (
     <>
-      <div className='Sidebar'>
-        <div className='top' style={{ backgroundColor: "var(--color-bg)" }}>
-          <span className='Logo'>
-            <img src={sunriseLogo} alt='' style={{ width: "100px" }} />
+      <div className="Sidebar">
+        <div className="top" style={{ backgroundColor: "var(--color-bg)" }}>
+          <span className="Logo">
+            <img src={sunriseLogo} alt="" style={{ width: "100px" }} />
           </span>
         </div>
 
-        <div className='center'>
+        <div className="center">
           {links.map((item) => (
             <ul key={item.title}>
-              <p className='title'>{item.title}</p>
+              <p className="title">{item.title}</p>
               {item.links.map((link) => (
                 <NavLink
                   to={`/admin/${link.name}`}
                   key={link.name}
-                  className='listOfLinks Icon'
+                  className="listOfLinks Icon"
                 >
                   {link.icon}
-                  <span className='capitalize'>{link.name}</span>
+                  <span className="capitalize">{link.name}</span>
                 </NavLink>
               ))}
             </ul>
           ))}
         </div>
-        <div>
-          <Link to={"/logout"}>
-            <span style={{ fontSize: "18px", fontWeight: "600" }}>Logout</span>
-          </Link>
-        </div>
-        <div className='bottom'>
-          <div className='colorOption'></div>
-          <div className='colorOption'></div>
+        <div className="bottom mt-4">
+          <div className="colorOption"></div>
+          <div className="colorOption"></div>
         </div>
       </div>
     </>

@@ -1,0 +1,35 @@
+.blog-container {
+    width: 80%;
+    margin: 3em auto;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .blog-container {
+      width: 95%;
+    }
+  }
+  
+  .blog-title {
+    font-size: 2em;
+    margin-bottom: 2em;
+  }
+  
+  .blog-input,
+  .blog-textarea {
+    width: 100% !important;
+    padding: 0.5em !important;
+    margin-bottom: 1em !important;
+    font-size: 1.2em !important;
+  }
+  
+  .blog-button {
+    padding: 0.5em 1em !important;
+    background-color: #3f51b5 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+    font-size: 1.2em !important;
+    cursor: pointer !important;
+  }
+  
