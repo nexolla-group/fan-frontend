@@ -8,9 +8,9 @@ function GroupsList({ myGroups, setSelectedGroup }) {
           <li
             key={index}
             onClick={() => setSelectedGroup(item)}
-            className="listGroup"
+            className='listGroup'
           >
-            {item.groupDetails.groupName}
+            {item?.groupDetails?.groupName}
           </li>
         ))}
       </ul>

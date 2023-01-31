@@ -13,8 +13,6 @@ const Widget = ({ type, amount }) => {
 
   // temporary while waiting jean demo to fetch some data from the backend database
 
-  const diff = 23.8;
-
   switch (type) {
     case "user":
       data = {
@@ -59,7 +57,7 @@ const Widget = ({ type, amount }) => {
       data = {
         title: "transactions",
         isMoney: true,
-        link: "view all more",
+        link: "view all Transactions",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className='icon'
@@ -109,13 +107,7 @@ const Widget = ({ type, amount }) => {
           <span className='link'>{data.link}</span>
         </Link>
       </div>
-      <div className='right'>
-        <div className='percentage positive'>
-          <ExpandLessOutlinedIcon />
-          {diff}%
-        </div>
-        {data.icon}
-      </div>
+      <div className='right'>{data.icon}</div>
     </div>
   );
 };

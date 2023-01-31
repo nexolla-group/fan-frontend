@@ -1,7 +1,54 @@
-import { Modal } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  Input,
+  InputLabel,
+  Modal,
+  TextField,
+  Typography,
+} from "@mui/material";
+import axios from "axios";
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { toastMessage } from "../../../helpers";
 
-export default function EditGroup() {
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+export default function EditGroup({ open, setOpen, group, fetchGroups }) {
+  const [groupName, setGroupName] = useState(group.groupName);
+  const [description, setDescription] = useState(group.description);
+
+  const handleClose = () => setOpen(false);
+  const handleEdit = () => {
+    axios
+      .put(process.env.REACT_APP_BACKEND_URL + "/api/groups/" + group._id, {
+        groupName,
+        description,
+      })
+      .then((res) => {
+        toastMessage("success", "Group is Updated");
+        fetchGroups();
+        handleClose();
+      })
+      .catch((error) => console.log(error));
+    console.log(group);
+  };
+
+  useEffect(() => {
+    setGroupName(group.groupName);
+    setDescription(group.description);
+  }, [group]);
   return (
     <div>
       <Modal
@@ -12,7 +59,7 @@ export default function EditGroup() {
       >
         <Box sx={style}>
           <Typography id='modal-modal-title' variant='h6' component='h2'>
-            Add group
+            Modify Group
           </Typography>
           <Typography id='modal-modal-description' sx={{ mt: 2 }}>
             <FormControl variant='standard' style={{ width: "100%" }}>
@@ -41,20 +88,20 @@ export default function EditGroup() {
                 label='Targeted amount'
                 rows={4}
                 variant='standard'
-                onChange={(e) => setTarget(e.target.value)}
-                value={target}
+                value={group.target}
+                disabled
               />
             </FormControl>
             <Button
               variant='contained'
-              onClick={handleCreate}
+              onClick={handleEdit}
               style={{
                 width: "100%",
                 backgroundColor: "#000",
                 marginTop: "1rem",
               }}
             >
-              Create a group
+              Update group
             </Button>
           </Typography>
         </Box>
