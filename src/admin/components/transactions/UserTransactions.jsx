@@ -38,7 +38,7 @@ export default function UserTransactions() {
         headerName: "Group Name",
         width: 200,
         renderCell: (item) => {
-          return item.row.groupId.groupName;
+          return item.row?.groupId?.groupName;
         },
       },
       { field: "telephoneNumber", headerName: "Telephone Number", width: 200 },
@@ -61,13 +61,27 @@ export default function UserTransactions() {
     <>
       <Navbar />
       <div className="container-fluid p-5">
-        <Typography
-          variant="h5"
-          mb={2}
-          sx={{ textAlign: "center", fontWeight: 500 }}
-        >
-          My Contribution History
-        </Typography>
+        <div className="row">
+          <div className="col col-md-6">
+            <Typography
+              variant="h5"
+              mb={2}
+              sx={{ textAlign: "Left", fontWeight: 500 }}
+            >
+              My Contribution History
+            </Typography>
+          </div>
+          <div className="col col-md-6 text-end">
+            {" "}
+            <Typography
+              variant="h5"
+              mb={2}
+              sx={{ textAlign: "Right", fontWeight: 500 }}
+            >
+              Total Contributions Made:
+            </Typography>
+          </div>
+        </div>
         <TableContainer component={Paper} className="table">
           <Box sx={{ width: "100%" }}>
             <div style={{ height: 400, width: "100%" }}>

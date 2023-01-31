@@ -10,7 +10,7 @@ function GroupsList({ myGroups, setSelectedGroup }) {
             onClick={() => setSelectedGroup(item)}
             className="listGroup"
           >
-            {item.groupDetails.groupName}
+            {item?.groupDetails?.groupName}
           </li>
         ))}
       </ul>
