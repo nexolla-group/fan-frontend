@@ -38,10 +38,10 @@ const ChatBox = ({ selectedGroup }) => {
 
   return (
     <>
-      <div className="chatbox">
+      <div className='chatbox'>
         {selectedGroup?.groupId ? (
           <>
-            <div className="chatbox-messages">
+            <div className='chatbox-messages'>
               {messages
                 .find((item) => item.groupId == selectedGroup.groupId)
                 ?.messages.map((item, index) => (
@@ -53,42 +53,42 @@ const ChatBox = ({ selectedGroup }) => {
                         : "chatbox-message combine"
                     }
                   >
-                    <div className="Fan">
+                    <div className='Fan'>
                       @
                       {username !== item.senderDetails.username
                         ? item.senderDetails.username
                         : "You"}
-                      <span className="range admin">
+                      <span className='range admin'>
                         {`[${item.senderDetails.role}]`}
                       </span>
                     </div>
                     {item.message}
-                    <time className="msgDate">
+                    <time className='msgDate'>
                       {new Date(item.createdAt).toLocaleDateString()}
                     </time>
                   </div>
                 ))}
             </div>
             <form onSubmit={handleSubmit}>
-              <div className="message-input">
+              <div className='message-input'>
                 <input
                   disabled={isSubmitting}
-                  type="text"
+                  type='text'
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Say something"
-                  className="input form-control"
+                  placeholder='Say something'
+                  className='input form-control'
                 />
-                <button type="submit" className="btn btn-success">
-                  {isSubmitting ? "Sending..." : "Send"}
+                <button type='submit' className='btn btn-success'>
+                  {isSubmitting ? "Wait..." : "Send"}
                 </button>
               </div>
             </form>
           </>
         ) : (
           <>
-            <div className="container-fluid">
-              <div class="alert alert-warning p-4" role="alert">
+            <div className='container-fluid'>
+              <div class='alert alert-warning p-4' role='alert'>
                 <h3> You haven't Clicked to any group yet!</h3>
                 <p>
                   On The group list Click on the group name you have joined to,
