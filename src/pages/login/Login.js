@@ -36,12 +36,12 @@ export default function Login() {
         password,
       })
       .then((res) => {
-        console.log(res.data);
+        console.log("login repooo:", res.data);
         dispatch(setUserId(res.data.id));
         dispatch(setFullNames(res.data.fullName));
         dispatch(setUsername(res.data.username));
         dispatch(setEmail(res.data.email));
-        dispatch(setPhone(res.data.telephoneNumber));
+        dispatch(setPhone(res.data.telephone));
         dispatch(setGender(res.data.gender));
         dispatch(setCoverPicture(res.data.coverPicture));
         dispatch(setProfilePicture(res.data.profilePicture));
@@ -55,8 +55,10 @@ export default function Login() {
       })
       .catch((error) => {
         setIsFetching(false);
+        if (error.code == "ERR_NETWORK") {
+          return toastMessage("error", "Network Error");
+        }
         errorHandler(error.response.data);
-        //error handler
       });
   };
   return (

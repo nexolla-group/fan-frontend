@@ -11,16 +11,16 @@ import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 
 const UserDashboard = () => {
-  const { token, id } = useSelector((state) => state.user);
+  const { token, id, fullName, phone } = useSelector((state) => state.user);
   const { groupId } = useParams();
-  const [fullNames, setFullNames] = useState("");
+  const [fullNames, setFullNames] = useState(fullName);
   const [amount, setAmount] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState(phone);
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [group, setGroup] = useState({});
-
+  console.log("telephone", phone);
   const fetchTarget = () => {
     axios
       .get(
@@ -41,6 +41,11 @@ const UserDashboard = () => {
   useEffect(() => {
     fetchTarget();
   }, [groupId]);
+
+  useEffect(() => {
+    setFullNames(fullName);
+    setPhoneNumber(phone);
+  }, [token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
