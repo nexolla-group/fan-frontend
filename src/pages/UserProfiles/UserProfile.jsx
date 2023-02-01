@@ -4,17 +4,80 @@ import "./userProfile.scss";
 import userProfile from "../../assets/userprofile.png";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import {
+  setAddress,
+  setEmail,
+  setFullNames,
+  setGender,
+  setPhone,
+  setUsername,
+} from "../../actions/user";
+import { LoadingButton } from "@mui/lab";
+import { errorHandler, toastMessage } from "../../helpers";
 
 const UserProfile = () => {
-  const { token, fullName, username, email, phone, gender, address } =
+  const dispatch = useDispatch();
+  const { token, id, fullName, username, email, phone, gender, address } =
     useSelector((state) => state.user);
-  const [fullNames, setFullNames] = useState(fullName);
+  const [userFullNames, setUserFullNames] = useState(fullName);
   const [userName, setUserName] = useState(username);
   const [userEmail, setUserEmail] = useState(email);
   const [userPhone, setUserPhone] = useState(phone);
   const [userGender, setUserGender] = useState(gender);
   const [userAddress, setUserAddress] = useState(address);
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
+  const handleUpdate = () => {
+    setLoading(true);
+    const data = {
+      fullName: userFullNames,
+      username: userName,
+      email: userEmail,
+      telephoneNumber: userPhone,
+      gender: userGender,
+      address: userAddress,
+      token,
+    };
+    axios
+      .put(
+        process.env.REACT_APP_BACKEND_URL + "/api/auth/userDetaails/" + id,
+        data
+      )
+      .then((res) => {
+        dispatch(setFullNames(res.data.data.fullName));
+        dispatch(setUsername(res.data.data.username));
+        dispatch(setEmail(res.data.data.email));
+        dispatch(setPhone(res.data.data.telephoneNumber));
+        dispatch(setGender(res.data.data.gender));
+        dispatch(setAddress(res.data.data.address));
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log("error for update", error);
+      });
+  };
+
+  const handleUpdatePassword = () => {
+    axios
+      .put(
+        process.env.REACT_APP_BACKEND_URL + "/api/auth/updatePassword/" + id,
+        { currentPassword, newPassword, token }
+      )
+      .then((res) => {
+        setCurrentPassword("");
+        setNewPassword("");
+        toastMessage("success", "Password Changed!!");
+      })
+      .catch((error) => {
+        errorHandler(error);
+      });
+  };
   return (
     <>
       <Navbar />
@@ -25,11 +88,13 @@ const UserProfile = () => {
               <img src='https://via.placeholder.com/150x150' alt='User Photo' />
             </div>
             <div className='user-info'>
-              <h2>User Name</h2>
-              <p>Email: user@email.com</p>
-              <p>Location: City, Country</p>
+              <h2>{username}</h2>
+              <p>Names: {fullName}</p>
+              <p>Email: {email}</p>
+              <p>Phone: {phone}</p>
+              <p>Address: {address}</p>
 
-              <Link to='/logout'>
+              {/* <Link to='/logout'>
                 <p
                   className='text-danger mt-5 fw-bold cur-pointer'
                   style={{ cursor: "pointer" }}
@@ -41,7 +106,7 @@ const UserProfile = () => {
                 >
                   Logout
                 </p>
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div className='update-user-details'>
@@ -52,8 +117,8 @@ const UserProfile = () => {
                   <input
                     type='text'
                     placeholder='Your Full name'
-                    value={fullNames}
-                    onChange={(e) => setFullNames(e.target.value)}
+                    value={userFullNames}
+                    onChange={(e) => setUserFullNames(e.target.value)}
                   />
                 </li>
                 <li>
@@ -93,9 +158,25 @@ const UserProfile = () => {
                     onChange={(e) => setUserAddress(e.target.value)}
                   />
                 </li>
-                <button className='btn btn-outline-primary'>
-                  <SaveOutlinedIcon /> Save Profile
-                </button>
+                {loading ? (
+                  <LoadingButton
+                    loading
+                    loadingPosition='start'
+                    startIcon={<SaveOutlinedIcon />}
+                    variant='outlined'
+                    className='btn btn-outline-primary'
+                  >
+                    Saving...
+                  </LoadingButton>
+                ) : (
+                  <button
+                    className='btn btn-outline-primary'
+                    onClick={handleUpdate}
+                  >
+                    <SaveOutlinedIcon />
+                    Save Profile
+                  </button>
+                )}
               </ul>
             </div>
             <div className='update-password'>
@@ -106,13 +187,23 @@ const UserProfile = () => {
                   <input
                     type='password'
                     placeholder='Enter Existing password'
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
                   />
                 </li>
                 <li>
                   New Password
-                  <input type='password' placeholder='Enter New password' />
+                  <input
+                    type='password'
+                    placeholder='Enter New password'
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                  />
                 </li>
-                <button className='btn btn-outline-primary'>
+                <button
+                  className='btn btn-outline-primary'
+                  onClick={handleUpdatePassword}
+                >
                   <SaveOutlinedIcon /> Save Password
                 </button>
               </ul>

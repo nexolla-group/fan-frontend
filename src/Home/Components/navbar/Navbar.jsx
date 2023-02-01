@@ -95,10 +95,6 @@ const Navbar = () => {
                     <p onClick={handleClick}>
                       <SettingsOutlinedIcon className='navIcon' /> Settings
                     </p>
-                    <div className='fanclub__navbar-menu_container-links-sign'>
-                      <p>Sign in</p>
-                      <button type='button'>Sign up</button>
-                    </div>
                   </div>
                 </div>
               )}
@@ -187,7 +183,14 @@ const Navbar = () => {
 
       <div className={`profile-info ${showDiv ? "show" : "hide"}`}>
         <div className='user-info'>
-          <img src={profilePic} alt='user profile pic' />
+          <img
+            src={
+              profilePicture
+                ? profilePicture
+                : "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png"
+            }
+            alt='user profile pic'
+          />
           <div>
             <h3>{fullName}</h3>
             <p>

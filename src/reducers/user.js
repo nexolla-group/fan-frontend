@@ -11,6 +11,7 @@ import {
   RESET_USER,
   SET_USER_PHONE,
   SET_USER_GENDER,
+  SET_USER_ADDRESS,
   SET_TOKEN,
   SET_USER_ID,
 } from "../actions/user";
@@ -22,6 +23,7 @@ const initialState = {
   email: "",
   phone: "",
   gender: "",
+  address:"",
   coverPicture: "",
   profilePicture: "",
   followers: [],
@@ -47,6 +49,8 @@ const user = (state = initialState, action) => {
       return { ...state, phone: action.payload };
     case SET_USER_GENDER:
       return { ...state, gender: action.payload };
+    case SET_USER_ADDRESS:
+      return { ...state, address: action.payload };
     case SET_COVER_PICTURE:
       return { ...state, coverPicture: action.payload };
     case SET_PROFILE_PICTURE:

@@ -11,6 +11,7 @@ export const SET_TOKEN = "SET_TOKEN";
 export const SET_USER_ID = "SET_USER_ID";
 export const SET_USER_PHONE = "SET_USER_PHONE";
 export const SET_USER_GENDER = "SET_USER_GENDER";
+export const SET_USER_ADDRESS = "SET_USER_ADDRESS";
 export const RESET_USER = "RESET_USER";
 
 export const setFullNames = (names) => (dispatch) => {
@@ -100,4 +101,10 @@ export const setGender = (gender) => (dispatch) => {
   });
 };
 
+export const setAddress = (address) => (dispatch) => {
+  dispatch({
+    type: SET_USER_ADDRESS,
+    payload: address,
+  });
+};
 export const resetUser = () => ({ type: RESET_USER });
