@@ -1,3 +1,55 @@
+.animate {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+.TransactionsCard {
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.TransactionsTitle {
+  font-size: 20px;
+  margin-top: 50px;
+  color: #333;
+}
+
+.TransactionsNumber {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #333;
+  animation: countup 2s ease-out;
+}
+
+@keyframes countup {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+
+
+
 @media print {
     table {
       display: none;

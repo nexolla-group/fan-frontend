@@ -1,8 +1,6 @@
 import { Paper, TableContainer, Box, Typography } from "@mui/material";
 import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import AdminNavbar from "../adminNavbar/AdminNavbar";
 import Placehold from "../placeholder";
@@ -10,12 +8,14 @@ import Sidebar from "../sidebar/Sidebar";
 import { DataGrid } from "@mui/x-data-grid";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
+import "./userTransactions.css";
 
 export default function Transactions() {
   const { token } = useSelector((state) => state.user);
   const [transactions, setTransacions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [animation, setAnimation] = useState("");
 
   const fetchTransactions = () => {
     setIsLoading(true);
@@ -26,6 +26,7 @@ export default function Transactions() {
       .then((res) => {
         setTransacions(res.data.transactions);
         setIsLoading(false);
+        setAnimation("animate");
       })
       .catch((error) => {
         setIsLoading(false);
@@ -111,15 +112,17 @@ export default function Transactions() {
                   variant='h5'
                   mb={2}
                   sx={{ textAlign: "Left", fontWeight: 500 }}
+                  className={`${animation}`}
                 >
                   Sunrise FC | Transactions
                 </Typography>
               </div>
               <div className='col col-md-6 text-end'>
                 <Typography
-                  variant='h5'
                   mb={2}
-                  sx={{ textAlign: "Right", fontWeight: 500 }}
+                  sx={{ textAlign: "Left", fontWeight: 500 }}
+                  variant='h5'
+                  className={` ${animation}`}
                 >
                   Total Contributions Made: {totalAmount} Rwf
                 </Typography>
@@ -140,7 +143,7 @@ export default function Transactions() {
                 </form>
               </div>
             </div>
-            <TableContainer component={Paper} className='table'>
+            <TableContainer component={Paper} className={`table ${animation}`}>
               <Box sx={{ width: "100%" }}>
                 <div style={{ height: 600, width: "100%" }}>
                   <DataGrid

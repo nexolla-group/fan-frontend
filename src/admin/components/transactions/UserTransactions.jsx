@@ -110,13 +110,10 @@ export default function UserTransactions() {
             </Typography>
           </div>
           <div className='col col-md-6 text-end'>
-            <Typography
-              variant='h5'
-              mb={2}
-              sx={{ textAlign: "Right", fontWeight: 500 }}
-            >
-              Total Contributions Made: {totalAmount} Rwf
-            </Typography>
+            <div className='TransactionsCard'>
+              <h2 className='TransactionsTitle'> Total Contributions Made</h2>
+              <p className='TransactionsNumber'>{totalAmount} Rwf</p>
+            </div>
           </div>
         </div>
         <div className='row mb-3'>
