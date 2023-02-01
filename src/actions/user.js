@@ -9,6 +9,8 @@ export const SET_JOINED_GROUPS = "SET_JOINED_GROUPS";
 export const SET_ROLE = "SET_ROLE";
 export const SET_TOKEN = "SET_TOKEN";
 export const SET_USER_ID = "SET_USER_ID";
+export const SET_USER_PHONE = "SET_USER_PHONE";
+export const SET_USER_GENDER = "SET_USER_GENDER";
 export const RESET_USER = "RESET_USER";
 
 export const setFullNames = (names) => (dispatch) => {
@@ -83,6 +85,18 @@ export const setRole = (role) => (dispatch) => {
   dispatch({
     type: SET_ROLE,
     payload: role,
+  });
+};
+export const setPhone = (phone) => (dispatch) => {
+  dispatch({
+    type: SET_USER_PHONE,
+    payload: phone,
+  });
+};
+export const setGender = (gender) => (dispatch) => {
+  dispatch({
+    type: SET_USER_GENDER,
+    payload: gender,
   });
 };
 

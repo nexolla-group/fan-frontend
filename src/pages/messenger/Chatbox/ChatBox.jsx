@@ -88,7 +88,7 @@ const ChatBox = ({ selectedGroup }) => {
         ) : (
           <>
             <div className='container-fluid'>
-              <div class='alert alert-warning p-4' role='alert'>
+              <div className='alert alert-warning p-4' role='alert'>
                 <h3> You haven't Clicked to any group yet!</h3>
                 <p>
                   On The group list Click on the group name you have joined to,

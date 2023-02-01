@@ -10,7 +10,7 @@ import "./userTransactions.css";
 import { Link } from "react-router-dom";
 
 export default function UserTransactions() {
-  const { token, username } = useSelector((state) => state.user);
+  const { token, id } = useSelector((state) => state.user);
   const [transactions, setTransacions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -22,7 +22,7 @@ export default function UserTransactions() {
         process.env.REACT_APP_BACKEND_URL + "/api/transactions/?token=" + token
       )
       .then((res) => {
-        setTransacions(res.data.transactions);
+        setTransacions(res.data.transactions.filter((tx) => tx?.userId == id));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -74,7 +74,14 @@ export default function UserTransactions() {
         width: 200,
       },
       { field: "address", headerName: "Address", width: 200 },
-      { field: "createdAt", headerName: "Created At", width: 200 },
+      {
+        field: "createdAt",
+        headerName: "Created At",
+        width: 200,
+        renderCell: (item) => {
+          return <>{new Date(item.row.createdAt).toLocaleDateString()}</>;
+        },
+      },
     ],
     []
   );
@@ -84,26 +91,27 @@ export default function UserTransactions() {
   }, []);
 
   const totalAmount = transactions.reduce(
-    (sum, transaction) => sum + transaction.amount,
+    (sum, transaction) =>
+      sum + (transaction.transactionStatus == "SUCCESS" && transaction.amount),
     0
   );
   return (
     <>
       <Navbar />
-      <div className="container-fluid p-5">
-        <div className="row mb-3">
-          <div className="col col-md-6">
+      <div className='container-fluid p-5'>
+        <div className='row mb-3'>
+          <div className='col col-md-6'>
             <Typography
-              variant="h5"
+              variant='h5'
               mb={2}
               sx={{ textAlign: "Left", fontWeight: 500 }}
             >
               Sunrise FC | Contribution History
             </Typography>
           </div>
-          <div className="col col-md-6 text-end">
+          <div className='col col-md-6 text-end'>
             <Typography
-              variant="h5"
+              variant='h5'
               mb={2}
               sx={{ textAlign: "Right", fontWeight: 500 }}
             >
@@ -111,14 +119,14 @@ export default function UserTransactions() {
             </Typography>
           </div>
         </div>
-        <div className="row mb-3">
-          <div className="col col-md-6">
+        <div className='row mb-3'>
+          <div className='col col-md-6'>
             <form>
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Search..."
+                  type='text'
+                  className='form-control'
+                  placeholder='Search...'
                   value={searchInput}
                   onChange={handleSearchInputChange}
                 />
@@ -126,7 +134,7 @@ export default function UserTransactions() {
             </form>
           </div>
         </div>
-        <TableContainer component={Paper} className="table">
+        <TableContainer component={Paper} className='table'>
           <Box sx={{ width: "100%" }}>
             <div style={{ height: 600, width: "100%" }}>
               <DataGrid
@@ -138,8 +146,8 @@ export default function UserTransactions() {
           </Box>
         </TableContainer>
 
-        <Link to="/printuserTransactions" target="blank">
-          <button className="btn btn-outline-secondary">Print</button>
+        <Link to='/printuserTransactions' target='blank'>
+          <button className='btn btn-outline-secondary'>Print</button>
         </Link>
       </div>
     </>

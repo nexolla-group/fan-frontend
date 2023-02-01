@@ -9,7 +9,9 @@ import {
   setFollowers,
   setFollowing,
   setFullNames,
+  setGender,
   setJoinedGroups,
+  setPhone,
   setProfilePicture,
   setRole,
   setToken,
@@ -34,10 +36,13 @@ export default function Login() {
         password,
       })
       .then((res) => {
+        console.log(res.data);
         dispatch(setUserId(res.data.id));
         dispatch(setFullNames(res.data.fullName));
         dispatch(setUsername(res.data.username));
         dispatch(setEmail(res.data.email));
+        dispatch(setPhone(res.data.telephoneNumber));
+        dispatch(setGender(res.data.gender));
         dispatch(setCoverPicture(res.data.coverPicture));
         dispatch(setProfilePicture(res.data.profilePicture));
         dispatch(setFollowers(res.data.followers));
@@ -45,10 +50,8 @@ export default function Login() {
         dispatch(setJoinedGroups(res.data.joinedGroups));
         dispatch(setRole(res.data.role));
         dispatch(setToken(res.data.token));
-        // res.data.role == "admin"
-        //   ? (window.location = "/admin")
-        //   : navigate("/messenger");
         setIsFetching(false);
+        toastMessage("success", "Logged in");
       })
       .catch((error) => {
         setIsFetching(false);

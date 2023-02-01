@@ -11,7 +11,7 @@ import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 
 const UserDashboard = () => {
-  const { token, username } = useSelector((state) => state.user);
+  const { token, id } = useSelector((state) => state.user);
   const { groupId } = useParams();
   const [fullNames, setFullNames] = useState("");
   const [amount, setAmount] = useState("");
@@ -80,6 +80,7 @@ const UserDashboard = () => {
             const data = {
               transactionId,
               groupId: groupId,
+              userId: id,
               amount,
               transactionStatus: paymentRes.data.status,
               senderName: fullNames,
@@ -131,68 +132,68 @@ const UserDashboard = () => {
   return (
     <>
       <Navbar />
-      <div className="userDashboard d-flex">
-        <div className="profile-main p-4" style={{ flex: 5 }}>
-          <div className="profile-description">
+      <div className='userDashboard d-flex'>
+        <div className='profile-main p-4' style={{ flex: 5 }}>
+          <div className='profile-description'>
             <h2>Fill the form below to make contribution</h2>
-            <form className="row g-3" onSubmit={handleSubmit}>
-              <div className="col-md-6">
-                <label htmlFor="Sender" className="form-label">
+            <form className='row g-3' onSubmit={handleSubmit}>
+              <div className='col-md-6'>
+                <label htmlFor='Sender' className='form-label'>
                   Sender full names
                 </label>
                 <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter your names"
+                  type='text'
+                  className='form-control'
+                  placeholder='Enter your names'
                   required
                   value={fullNames}
                   onChange={(e) => setFullNames(e.target.value)}
                 />
               </div>
-              <div className="col-md-6">
-                <label htmlFor="amount" className="form-label">
+              <div className='col-md-6'>
+                <label htmlFor='amount' className='form-label'>
                   amount | Rwf
                 </label>
                 <input
-                  type="number"
-                  className="form-control"
-                  placeholder="Enter your support amount here"
+                  type='number'
+                  className='form-control'
+                  placeholder='Enter your support amount here'
                   value={amount}
                   required
                   onChange={(e) => setAmount(e.target.value)}
                 />
               </div>
-              <div className="col-md-12">
-                <label htmlFor="inputText" className="form-label">
+              <div className='col-md-12'>
+                <label htmlFor='inputText' className='form-label'>
                   telephone Number
                 </label>
                 <input
                   required
-                  type="text"
-                  className="form-control"
+                  type='text'
+                  className='form-control'
                   maxLength={10}
                   value={phoneNumber}
-                  placeholder="enter the phone number you want to use for Mobile Money payment"
+                  placeholder='enter the phone number you want to use for Mobile Money payment'
                   onChange={(e) => setPhoneNumber(e.target.value)}
                 />
               </div>
-              <div className="col-12">
-                <label htmlFor="inputAddress" className="form-label">
+              <div className='col-12'>
+                <label htmlFor='inputAddress' className='form-label'>
                   Address
                 </label>
                 <input
                   required
-                  type="text"
-                  className="form-control"
-                  id="inputAddress"
-                  placeholder="Where are you from? ex: 1234 Main St"
+                  type='text'
+                  className='form-control'
+                  id='inputAddress'
+                  placeholder='Where are you from? ex: 1234 Main St'
                   onChange={(e) => setAddress(e.target.value)}
                   value={address}
                 />
               </div>
 
-              <div className="col-12">
-                <button type="submit" className="btn btn-primary">
+              <div className='col-12'>
+                <button type='submit' className='btn btn-primary'>
                   {loading ? "proceeding..." : "proceed payment"}
                 </button>
               </div>

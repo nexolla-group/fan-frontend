@@ -40,7 +40,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .loginInput {
@@ -55,7 +56,7 @@
   outline: none;
   color: var(--color-footer);
   border-radius: 5px;
-  margin:10px 0;
+  margin: 10px 0;
 }
 
 .loginInput:focus {
@@ -92,4 +93,16 @@
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+.card-registration .select-arrow {
+  top: 13px;
+}
+.img-fluid {
+  padding: 20% 0;
 }

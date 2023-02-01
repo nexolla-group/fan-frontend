@@ -57,7 +57,8 @@ export default function Transactions() {
   });
 
   const totalAmount = transactions.reduce(
-    (sum, transaction) => sum + transaction.amount,
+    (sum, transaction) =>
+      sum + (transaction.transactionStatus == "SUCCESS" && transaction.amount),
     0
   );
 
@@ -81,7 +82,14 @@ export default function Transactions() {
         width: 200,
       },
       { field: "address", headerName: "Address", width: 200 },
-      { field: "createdAt", headerName: "Created At", width: 200 },
+      {
+        field: "createdAt",
+        headerName: "Created At",
+        width: 200,
+        renderCell: (item) => {
+          return new Date(item.row.createdAt).toLocaleDateString();
+        },
+      },
     ],
     []
   );
@@ -92,24 +100,24 @@ export default function Transactions() {
 
   return (
     <>
-      <div className="Home">
+      <div className='Home'>
         <Sidebar />
-        <div className="homeContainer">
+        <div className='homeContainer'>
           <AdminNavbar />
-          <div className="container-fluid p-5">
-            <div className="row mb-3">
-              <div className="col col-md-6">
+          <div className='container-fluid p-5'>
+            <div className='row mb-3'>
+              <div className='col col-md-6'>
                 <Typography
-                  variant="h5"
+                  variant='h5'
                   mb={2}
                   sx={{ textAlign: "Left", fontWeight: 500 }}
                 >
                   Sunrise FC | Transactions
                 </Typography>
               </div>
-              <div className="col col-md-6 text-end">
+              <div className='col col-md-6 text-end'>
                 <Typography
-                  variant="h5"
+                  variant='h5'
                   mb={2}
                   sx={{ textAlign: "Right", fontWeight: 500 }}
                 >
@@ -117,14 +125,14 @@ export default function Transactions() {
                 </Typography>
               </div>
             </div>
-            <div className="row mb-3">
-              <div className="col col-md-6">
+            <div className='row mb-3'>
+              <div className='col col-md-6'>
                 <form>
-                  <div className="form-group">
+                  <div className='form-group'>
                     <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Search..."
+                      type='text'
+                      className='form-control'
+                      placeholder='Search...'
                       value={searchInput}
                       onChange={handleSearchInputChange}
                     />
@@ -132,7 +140,7 @@ export default function Transactions() {
                 </form>
               </div>
             </div>
-            <TableContainer component={Paper} className="table">
+            <TableContainer component={Paper} className='table'>
               <Box sx={{ width: "100%" }}>
                 <div style={{ height: 600, width: "100%" }}>
                   <DataGrid
@@ -144,8 +152,8 @@ export default function Transactions() {
               </Box>
             </TableContainer>
 
-            <Link to="/printuserTransactions" target="blank">
-              <button className="btn btn-outline-secondary">Print</button>
+            <Link to='/printuserTransactions' target='blank'>
+              <button className='btn btn-outline-secondary'>Print</button>
             </Link>
           </div>
         </div>

@@ -9,6 +9,8 @@ import {
   SET_JOINED_GROUPS,
   SET_ROLE,
   RESET_USER,
+  SET_USER_PHONE,
+  SET_USER_GENDER,
   SET_TOKEN,
   SET_USER_ID,
 } from "../actions/user";
@@ -18,6 +20,8 @@ const initialState = {
   fullName: "",
   username: "",
   email: "",
+  phone: "",
+  gender: "",
   coverPicture: "",
   profilePicture: "",
   followers: [],
@@ -39,6 +43,10 @@ const user = (state = initialState, action) => {
       return { ...state, username: action.payload };
     case SET_EMAIL:
       return { ...state, email: action.payload };
+    case SET_USER_PHONE:
+      return { ...state, phone: action.payload };
+    case SET_USER_GENDER:
+      return { ...state, gender: action.payload };
     case SET_COVER_PICTURE:
       return { ...state, coverPicture: action.payload };
     case SET_PROFILE_PICTURE:
