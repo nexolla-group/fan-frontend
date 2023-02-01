@@ -4,7 +4,8 @@ import Sidebar from "../components/sidebar/Sidebar";
 import "./posts.css";
 
 import Fab from "@mui/material/Fab";
-import { makeStyles, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
+import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
