@@ -36,7 +36,7 @@ const rows = [
 ];
 const UserDataTable = () => {
   return (
-    <div className="dataTable">
+    <div className='dataTable'>
       <DataGrid
         rows={rows}
         columns={columns}

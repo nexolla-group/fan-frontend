@@ -235,7 +235,7 @@ export default function Register() {
                   <div className='col-xl-6 d-none d-xl-block'>
                     <img
                       src='/assets/post/signupDrawer.svg'
-                      alt='Sample photo'
+                      alt='Sample pic'
                       className='img-fluid'
                       style={{
                         borderTopLeftRadius: ".25rem",

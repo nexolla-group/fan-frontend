@@ -19,7 +19,7 @@ const user = (state = initialState, action) => {
     case UPDATE_GROUP_MESSAGES: {
       let newState = state.messages;
       const exists = newState.findIndex(
-        (item) => item.groupId == action.payload.groupId
+        (item) => item.groupId === action.payload.groupId
       );
       if (exists >= 0) {
         newState[exists] = action.payload;

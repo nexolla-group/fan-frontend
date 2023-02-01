@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Navbar } from "../../../Home/Components";
 import "./userDashboard.css";
-import { CircularProgressbarWithChildren } from "react-circular-progressbar";
+
 import "react-circular-progressbar/dist/styles.css";
 import axios from "axios";
 import Featured from "../../../admin/components/featuresChart/Featured";
@@ -42,7 +42,6 @@ const UserDashboard = () => {
     fetchTarget();
   }, [groupId]);
 
-  const percentage = 66;
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);

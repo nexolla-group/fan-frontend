@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Feeds from "../../components/feeds/Feeds";
 import Rightbar from "../../components/rightbar/Rightbar";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Topbar from "../../components/topbar/Topbar";
 import "./profile.css";
 import { useParams } from "react-router";
 import { Navbar } from "../../Home/Components";
