@@ -5,12 +5,14 @@ import { Feature } from "../../Components";
 import "./whatPlatform.css";
 
 const WhatPlatform = () => {
-  const [posts, setPosts] = useState([]);
+  const [blogPost, setBlogPosts] = useState([]);
+  const [newsPost, setNewPost] = useState([]);
   const fetchPost = () => {
     axios
       .get(process.env.REACT_APP_BACKEND_URL + "/api/post")
       .then((res) => {
-        setPosts(res.data.data);
+        setBlogPosts(res.data.data.filter((item) => item.type === "blog"));
+        setNewPost(res.data.data.filter((item) => item.type === "news"));
       })
       .catch((error) => console.log("Bad", error));
   };
@@ -30,7 +32,7 @@ const WhatPlatform = () => {
         <p>Join our Team Today</p>
       </div>
       <div className='platform__whatplatform-container'>
-        {posts.map((item) => (
+        {blogPost.map((item) => (
           <Feature title={item?.title} text={item?.desc} />
         ))}
 

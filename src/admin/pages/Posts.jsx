@@ -28,12 +28,34 @@ const Posts = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [postingBlog, setPostingBlog] = useState(false);
+  const [postingNews, setPostingNews] = useState(false);
   const [animation, setAnimation] = useState("");
   const [openEdit, setOpenEdit] = React.useState(false);
   const [postToEdit, setPostToEdit] = useState([]);
+  const [newsTitle, setNewsTitle] = useState("");
+  const [newsContent, setNewsContent] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setPostingNews(true);
+    axios
+      .post(process.env.REACT_APP_BACKEND_URL + "/api/post", {
+        title: newsTitle,
+        desc: newsContent,
+        type: "news",
+        token,
+      })
+      .then((res) => {
+        setNewsTitle("");
+        setNewsContent("");
+        toastMessage("success", res.data.message);
+        fetchPost();
+        setPostingNews(false);
+      })
+      .catch((error) => {
+        errorHandler(error);
+        setPostingNews(false);
+      });
   };
 
   const handlePost = (e) => {
@@ -43,6 +65,7 @@ const Posts = () => {
       .post(process.env.REACT_APP_BACKEND_URL + "/api/post", {
         title,
         desc: content,
+        type: "blog",
         token,
       })
       .then((res) => {
@@ -76,12 +99,14 @@ const Posts = () => {
   const columns = useMemo(
     () => [
       { field: "title", headerName: "Title", width: 150 },
-      { field: "desc", headerName: "Content", width: 200 },
+      { field: "desc", headerName: "Content", width: 300 },
+      { field: "type", headerName: "Type", width: 100 },
+
       { field: "userId", headerName: "user", width: 200 },
       {
         field: "createdAt",
         headerName: "Created At",
-        width: 100,
+        width: 150,
         renderCell: (item) => {
           return new Date(item.row.createdAt).toLocaleDateString();
         },
@@ -190,6 +215,8 @@ const Posts = () => {
                     label='Title'
                     variant='outlined'
                     placeholder='Enter Title'
+                    value={newsTitle}
+                    onChange={(e) => setNewsTitle(e.target.value)}
                   />
                 </div>
                 <div>
@@ -200,6 +227,8 @@ const Posts = () => {
                     placeholder='Enter Content'
                     multiline
                     rows={4}
+                    value={newsContent}
+                    onChange={(e) => setNewsContent(e.target.value)}
                   />
                 </div>
                 <div>
@@ -210,7 +239,7 @@ const Posts = () => {
                     aria-label='add'
                     onClick={handleSubmit}
                   >
-                    Create
+                    {postingNews ? "creating..." : "Create"}
                   </Fab>
                 </div>
               </form>
@@ -218,11 +247,11 @@ const Posts = () => {
           </div>
         </div>
         <div className='row'>
-          <div className='col col-md-8 col-sm-12 col-12 m-2'>
+          <div className='col col-md-11 col-sm-12 col-12 m-2'>
             <h2 style={{ fontWeight: "700", marginLeft: "70px" }}>Blog Post</h2>
             <TableContainer component={Paper} className={`table ${animation}`}>
               <Box sx={{ width: "100%" }}>
-                <div style={{ height: 300, width: "100%" }}>
+                <div style={{ height: 500, width: "100%" }}>
                   <DataGrid
                     rows={fetchedPost}
                     columns={columns}
