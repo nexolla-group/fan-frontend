@@ -33,10 +33,10 @@ export default function EditPost({ open, setOpen, post, fetchPost }) {
   const [loading, setLoading] = useState(false);
 
   const handleClose = () => setOpen(false);
-  const handleEdit = () => {
+  const handleEdit = (id) => {
     setLoading(true);
     axios
-      .put(process.env.REACT_APP_BACKEND_URL + "/api/post/" + post._id, {
+      .put(process.env.REACT_APP_BACKEND_URL + "/api/post/" + id, {
         title,
         desc: description,
         token,
@@ -92,7 +92,7 @@ export default function EditPost({ open, setOpen, post, fetchPost }) {
 
             <Button
               variant='contained'
-              onClick={handleEdit}
+              onClick={() => handleEdit(post._id)}
               style={{
                 width: "100%",
                 backgroundColor: "#000",
