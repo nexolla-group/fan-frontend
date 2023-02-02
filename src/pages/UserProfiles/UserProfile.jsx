@@ -81,42 +81,28 @@ const UserProfile = () => {
   return (
     <>
       <Navbar />
-      <div className='container-fluid ProfileContainer'>
-        <div className='user-page'>
-          <div className='user-header'>
-            <div className='user-photo'>
-              <img src='https://via.placeholder.com/150x150' alt='User Photo' />
+      <div className="container-fluid ProfileContainer">
+        <div className="user-page">
+          <div className="user-header">
+            <div className="user-photo">
+              <img src="https://via.placeholder.com/150x150" alt="User Photo" />
             </div>
-            <div className='user-info'>
+            <div className="user-info">
               <h2>{username}</h2>
               <p>Names: {fullName}</p>
               <p>Email: {email}</p>
               <p>Phone: {phone}</p>
               <p>Address: {address}</p>
-
-              {/* <Link to='/logout'>
-                <p
-                  className='text-danger mt-5 fw-bold cur-pointer'
-                  style={{ cursor: "pointer" }}
-                  onClick={(e) => {
-                    if (!window.confirm("Are you sure you want to log out?")) {
-                      e.preventDefault();
-                    }
-                  }}
-                >
-                  Logout
-                </p>
-              </Link> */}
             </div>
           </div>
-          <div className='update-user-details'>
-            <div className='user-basic-info'>
+          <div className="update-user-details">
+            <div className="user-basic-info">
               <ul>
                 <li>
                   Full Name
                   <input
-                    type='text'
-                    placeholder='Your Full name'
+                    type="text"
+                    placeholder="Your Full name"
                     value={userFullNames}
                     onChange={(e) => setUserFullNames(e.target.value)}
                   />
@@ -124,8 +110,8 @@ const UserProfile = () => {
                 <li>
                   Username
                   <input
-                    type='text'
-                    placeholder='Your Username'
+                    type="text"
+                    placeholder="Your Username"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
                   />
@@ -133,8 +119,8 @@ const UserProfile = () => {
                 <li>
                   Email
                   <input
-                    type='text'
-                    placeholder='Your Email'
+                    type="text"
+                    placeholder="Your Email"
                     value={userEmail}
                     onChange={(e) => setUserEmail(e.target.value)}
                   />
@@ -142,8 +128,8 @@ const UserProfile = () => {
                 <li>
                   Phone
                   <input
-                    type='tel'
-                    placeholder='Your Phone number'
+                    type="tel"
+                    placeholder="Your Phone number"
                     value={userPhone}
                     onChange={(e) => setUserPhone(e.target.value)}
                   />
@@ -152,8 +138,8 @@ const UserProfile = () => {
                 <li>
                   Address
                   <input
-                    type='text'
-                    placeholder='Your Address'
+                    type="text"
+                    placeholder="Your Address"
                     value={userAddress}
                     onChange={(e) => setUserAddress(e.target.value)}
                   />
@@ -161,16 +147,16 @@ const UserProfile = () => {
                 {loading ? (
                   <LoadingButton
                     loading
-                    loadingPosition='start'
+                    loadingPosition="start"
                     startIcon={<SaveOutlinedIcon />}
-                    variant='outlined'
-                    className='btn btn-outline-primary'
+                    variant="outlined"
+                    className="btn btn-outline-primary"
                   >
                     Saving...
                   </LoadingButton>
                 ) : (
                   <button
-                    className='btn btn-outline-primary'
+                    className="btn btn-outline-primary"
                     onClick={handleUpdate}
                   >
                     <SaveOutlinedIcon />
@@ -179,14 +165,14 @@ const UserProfile = () => {
                 )}
               </ul>
             </div>
-            <div className='update-password'>
+            <div className="update-password">
               <p>Update Password</p>
               <ul>
                 <li>
                   Current password
                   <input
-                    type='password'
-                    placeholder='Enter Existing password'
+                    type="password"
+                    placeholder="Enter Existing password"
                     value={currentPassword}
                     onChange={(e) => setCurrentPassword(e.target.value)}
                   />
@@ -194,14 +180,14 @@ const UserProfile = () => {
                 <li>
                   New Password
                   <input
-                    type='password'
-                    placeholder='Enter New password'
+                    type="password"
+                    placeholder="Enter New password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                   />
                 </li>
                 <button
-                  className='btn btn-outline-primary'
+                  className="btn btn-outline-primary"
                   onClick={handleUpdatePassword}
                 >
                   <SaveOutlinedIcon /> Save Password
