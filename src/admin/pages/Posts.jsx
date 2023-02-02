@@ -13,6 +13,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useMemo } from "react";
 import { useEffect } from "react";
 import { Delete, Edit } from "@mui/icons-material";
+import EditPost from "../components/editPost/EditPost";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +29,8 @@ const Posts = () => {
   const [content, setContent] = useState("");
   const [postingBlog, setPostingBlog] = useState(false);
   const [animation, setAnimation] = useState("");
+  const [openEdit, setOpenEdit] = React.useState(false);
+  const [postToEdit, setPostToEdit] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -89,14 +92,22 @@ const Posts = () => {
         width: 80,
         renderCell: (item) => (
           <>
-            {" "}
-            <Edit /> <Delete onClick={() => handleDelete(item.row._id)} />
+            <Edit
+              onClick={() => {
+                handleOpenEdit();
+                setPostToEdit(item.row);
+              }}
+            />
+            <Delete onClick={() => handleDelete(item.row._id)} />
           </>
         ),
       },
     ],
     []
   );
+  const handleOpenEdit = () => {
+    setOpenEdit(true);
+  };
 
   const handleDelete = (id) => {
     axios
@@ -207,10 +218,11 @@ const Posts = () => {
           </div>
         </div>
         <div className='row'>
-          <div className='col col-md-6 col-sm-12 col-12'>
+          <div className='col col-md-8 col-sm-12 col-12 m-2'>
+            <h2 style={{ fontWeight: "700", marginLeft: "70px" }}>Blog Post</h2>
             <TableContainer component={Paper} className={`table ${animation}`}>
               <Box sx={{ width: "100%" }}>
-                <div style={{ height: 600, width: "100%" }}>
+                <div style={{ height: 300, width: "100%" }}>
                   <DataGrid
                     rows={fetchedPost}
                     columns={columns}
@@ -219,6 +231,12 @@ const Posts = () => {
                 </div>
               </Box>
             </TableContainer>
+            <EditPost
+              open={openEdit}
+              setOpen={setOpenEdit}
+              post={postToEdit}
+              fetchPost={fetchPost}
+            />
           </div>
         </div>
       </div>
