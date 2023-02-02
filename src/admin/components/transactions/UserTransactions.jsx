@@ -98,32 +98,32 @@ export default function UserTransactions() {
   return (
     <>
       <Navbar />
-      <div className='container-fluid p-5'>
-        <div className='row mb-3'>
-          <div className='col col-md-6'>
+      <div className="container-fluid p-5">
+        <div className="row mb-3">
+          <div className="col col-md-6">
             <Typography
-              variant='h5'
+              variant="h5"
               mb={2}
               sx={{ textAlign: "Left", fontWeight: 500 }}
             >
               Sunrise FC | Contribution History
             </Typography>
           </div>
-          <div className='col col-md-6 text-end'>
-            <div className='TransactionsCard'>
-              <h2 className='TransactionsTitle'> Total Contributions Made</h2>
-              <p className='TransactionsNumber'>{totalAmount} Rwf</p>
+          <div className="col col-md-6 text-end">
+            <div className="TransactionsCard">
+              <h2 className="TransactionsTitle"> Total Contributions Made</h2>
+              <p className="TransactionsNumber">{totalAmount} Rwf</p>
             </div>
           </div>
         </div>
-        <div className='row mb-3'>
-          <div className='col col-md-6'>
+        <div className="row mb-3">
+          <div className="col col-md-6">
             <form>
-              <div className='form-group'>
+              <div className="form-group">
                 <input
-                  type='text'
-                  className='form-control'
-                  placeholder='Search...'
+                  type="text"
+                  className="form-control"
+                  placeholder="Search..."
                   value={searchInput}
                   onChange={handleSearchInputChange}
                 />
@@ -131,7 +131,7 @@ export default function UserTransactions() {
             </form>
           </div>
         </div>
-        <TableContainer component={Paper} className='table'>
+        <TableContainer component={Paper} className="table">
           <Box sx={{ width: "100%" }}>
             <div style={{ height: 600, width: "100%" }}>
               <DataGrid
@@ -143,9 +143,9 @@ export default function UserTransactions() {
           </Box>
         </TableContainer>
 
-        <Link to='/printuserTransactions' target='blank'>
+        {/* <Link to='/printuserTransactions' target='blank'>
           <button className='btn btn-outline-secondary'>Print</button>
-        </Link>
+        </Link> */}
       </div>
     </>
   );

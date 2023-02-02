@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "../../../Home/Components";
 import "./avaibaleGroups.scss";
 
 import axios from "axios";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { errorHandler, toastMessage } from "../../../helpers";
+import { Tooltip } from "bootstrap";
 
 const AvairableGroups = () => {
   const [groups, setGroup] = useState([]);
@@ -34,6 +34,7 @@ const AvairableGroups = () => {
       })
       .catch((error) => console.log(error));
   };
+
   useEffect(() => {
     fetchGroup();
     fetchJoinedGroup();
@@ -89,8 +90,13 @@ const AvairableGroups = () => {
               </div>
               <div className="cards">
                 {groups.map((group, i) => (
-                  <div className=" card" key={i}>
-                    <div className="card__inner groupDesc p-4 d-block ">
+                  <div className="card" key={i}>
+                    <div
+                      className="card__inner groupDesc p-4 d-block"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title={group.description}
+                    >
                       <span className="d-block">{group.groupName}</span>
                       {joinedGroup.find(
                         (item) => item.groupId === group._id
