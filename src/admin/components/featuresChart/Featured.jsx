@@ -39,25 +39,32 @@ const Featured = ({ group }) => {
           </CircularProgressbarWithChildren>
         </div>
         <p className="title">Total Contributions made</p>
-        <p className="amount">{group?._id && `${group.targetReached} Rwf`}</p>
+        <p className="amount">
+          {group?._id && `${group.targetReached}`} {""} Rwf
+        </p>
         <p className="description">{group?._id && group.description}</p>
         {group?._id && (
           <div className="summary">
             <div className="item">
               <div className="itemTitle">Target</div>
-              <div className="itemResult negative">
+              <div className="itemResult positive">
                 <KeyboardArrowDownOutlinedIcon fontSize="small" />
                 <div className="resultAmount">
-                  {kFormatter(group.target)}rwf
+                  {kFormatter(group.target)} {""} Rwf
                 </div>
               </div>
             </div>
             <div className="item">
               <div className="itemTitle">balance</div>
-              <div className="itemResult positive">
+              <div
+                className={`itemResult ${
+                  group.targetReached >= group.target ? "positive" : "negative"
+                } `}
+              >
                 <KeyboardArrowUpOutlinedIcon fontSize="small" />
                 <div className="resultAmount">
-                  {kFormatter(group.targetReached)}rwf
+                  {kFormatter(group.targetReached)}
+                  {""} Rwf
                 </div>
               </div>
             </div>
@@ -73,7 +80,7 @@ const Featured = ({ group }) => {
                       ? group.target - group.targetReached
                       : group.targetReached - group.target
                   )}
-                  Rwf
+                  {""} Rwf
                 </div>
               </div>
             </div>

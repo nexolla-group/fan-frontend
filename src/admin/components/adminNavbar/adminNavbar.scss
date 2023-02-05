@@ -92,4 +92,13 @@
         background: var(--color-bg) !important;
         color: #fff;
       }
+   
+      .showNotifications{
+        
+        display: flex;
+      }
+      .hideNotifications{
+        display: none !important;
+      }
+       
 }

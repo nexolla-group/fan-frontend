@@ -41,6 +41,8 @@ import Results from "./admin/components/Results/Results";
 
 function App() {
   const [isVisible, setIsVisible] = useState(true);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showMessaging, setShowMessaging] = useState(false);
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };

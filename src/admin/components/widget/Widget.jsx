@@ -18,10 +18,10 @@ const Widget = ({ type, amount }) => {
       data = {
         title: "users",
         isMoney: false,
-        link: "view all users",
+        link: "View all Users",
         icon: (
           <PersonOutlineOutlinedIcon
-            className='icon'
+            className="icon"
             style={{ color: "#fff", backgroundColor: "var(--color-bg)" }}
           />
         ),
@@ -34,7 +34,7 @@ const Widget = ({ type, amount }) => {
         link: "view all fans",
         icon: (
           <PersonOutlineOutlinedIcon
-            className='icon'
+            className="icon"
             style={{ color: "#fff", backgroundColor: "var(--color-text)" }}
           />
         ),
@@ -44,10 +44,10 @@ const Widget = ({ type, amount }) => {
       data = {
         title: "earnings",
         isMoney: true,
-        link: "view all earnings",
+        link: "View all Earnings",
         icon: (
           <AccountBalanceWalletOutlinedIcon
-            className='icon'
+            className="icon"
             style={{ color: "#fff", backgroundColor: "green" }}
           />
         ),
@@ -57,10 +57,10 @@ const Widget = ({ type, amount }) => {
       data = {
         title: "transactions",
         isMoney: true,
-        link: "view all Transactions",
+        link: "View all Transactions",
         icon: (
           <AccountBalanceWalletOutlinedIcon
-            className='icon'
+            className="icon"
             style={{ color: "#fff", backgroundColor: "lightgreen" }}
           />
         ),
@@ -70,10 +70,10 @@ const Widget = ({ type, amount }) => {
       data = {
         title: "posts",
         isMoney: false,
-        link: "view all posts",
+        link: "View all Posts",
         icon: (
           <SignpostOutlinedIcon
-            className='icon'
+            className="icon"
             style={{ color: "#fff", backgroundColor: "green" }}
           />
         ),
@@ -83,10 +83,10 @@ const Widget = ({ type, amount }) => {
       data = {
         title: "groups",
         isMoney: false,
-        link: "view all groups",
+        link: "View all Groups",
         icon: (
           <GroupOutlined
-            className='icon'
+            className="icon"
             style={{ color: "#fff", backgroundColor: "var(--color-text)" }}
           />
         ),
@@ -97,17 +97,17 @@ const Widget = ({ type, amount }) => {
   }
 
   return (
-    <div className='widget'>
-      <div className='left'>
-        <span className='title'>{data.title}</span>
-        <span className='counter'>
+    <div className="widget">
+      <div className="left">
+        <span className="title">{data.title}</span>
+        <span className="counter">
           {amount} {data.isMoney}
         </span>
         <Link to={`/admin/${data.title}`}>
-          <span className='link'>{data.link}</span>
+          <span className="link">{data.link}</span>
         </Link>
       </div>
-      <div className='right'>{data.icon}</div>
+      <div className="right">{data.icon}</div>
     </div>
   );
 };
