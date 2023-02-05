@@ -11,7 +11,7 @@ import admini from "../../../assets/admin.jpg";
 
 import { Link, NavLink } from "react-router-dom";
 
-const AdminNavbar = ({ isVisible, setIsVisible, toggleVisibility }) => {
+const AdminNavbar = ({ toggleVisibility }) => {
   const [showProfile, setShowProfile] = useState(false);
 
   const handleClick = () => {

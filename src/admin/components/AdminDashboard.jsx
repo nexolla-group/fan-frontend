@@ -12,17 +12,12 @@ import Sidebar from "./sidebar/Sidebar";
 
 import Widget from "./widget/Widget";
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ isVisible, toggleVisibility }) => {
   const { token } = useSelector((state) => state.user);
   const [users, setUsers] = useState([]);
   const [posts, setPosts] = useState([]);
   const [groups, setGroups] = useState([]);
   const [transactions, setTransactions] = useState([]);
-  const [isVisible, setIsVisible] = useState(true);
-
-  const toggleVisibility = () => {
-    setIsVisible(!isVisible);
-  };
 
   const fetchUsers = () => {
     axios
@@ -72,11 +67,7 @@ const AdminDashboard = () => {
         {isVisible && <Sidebar />}
 
         <div className="homeContainer">
-          <AdminNavbar
-            isVisible={isVisible}
-            setIsVisible={setIsVisible}
-            toggleVisibility={toggleVisibility}
-          />
+          <AdminNavbar toggleVisibility={toggleVisibility} />
           <div className="widgets">
             <div className="row w-100">
               <div className="col col-md-3 col-sm-12 mb-4">

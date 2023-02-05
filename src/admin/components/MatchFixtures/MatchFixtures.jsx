@@ -4,13 +4,13 @@ import Sidebar from "../sidebar/Sidebar";
 import FixturesAndResultsTable from "./FixturesAndResultsTable";
 import "./MatchFixtures.css";
 
-function MatchFixtures() {
+function MatchFixtures({ isVisible, toggleVisibility }) {
   return (
     <>
       <div className="Home">
-        <Sidebar />
+        {isVisible && <Sidebar />}
         <div className="homeContainer">
-          <AdminNavbar />
+          <AdminNavbar toggleVisibility={toggleVisibility} />
           <div className="Fixturescontainer">
             <div className="fixtures">
               <h2>Enter Upcoming Fixtures</h2>
