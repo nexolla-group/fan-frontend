@@ -21,7 +21,9 @@ const Features = () => {
   return (
     <div className="platform__features section__padding" id="newsAndGarelly">
       <div className="platform__features-heading">
-        <h1 className="gradient__text">News</h1>
+        <h1 style={{ marginLeft: "1rem" }} className="gradient__text">
+          Trending News
+        </h1>
       </div>
       <div className="platform__features-container">
         {newsPost.map((item, index) => (

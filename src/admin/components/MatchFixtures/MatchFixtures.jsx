@@ -21,6 +21,11 @@ function MatchFixtures({ isVisible, toggleVisibility }) {
                 <input type="text" placeholder="Enter Away Team" />
                 <label>Date</label>
                 <input type="text" placeholder="Enter Date" />
+                <label>Location</label>
+                <input
+                  type="text"
+                  placeholder="Enter Location or stadium name"
+                />
                 <input type="submit" value="Save" />
               </form>
             </div>
@@ -33,6 +38,11 @@ function MatchFixtures({ isVisible, toggleVisibility }) {
                 <input type="text" placeholder="Enter Away Team" />
                 <label>Result</label>
                 <input type="text" placeholder="Enter Result" />
+                <label>Location</label>
+                <input
+                  type="text"
+                  placeholder="Enter Location or stadium name"
+                />
                 <input type="submit" value="Save" />
               </form>
             </div>

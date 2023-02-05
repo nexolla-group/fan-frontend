@@ -1,7 +1,7 @@
 .platform__features{
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    display: block;
+    flex-direction: column;
     justify-content: space-between;
 }
 .platform__features-heading{
@@ -30,10 +30,10 @@
 }
 .platform__features-container{
     flex: 1.5;
-    display: flex;
+    display: block;
     justify-content: flex-start;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 @media screen and (max-width:990px){
     .platform__features{

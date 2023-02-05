@@ -61,10 +61,10 @@ const AdminNavbar = ({ toggleVisibility }) => {
           showProfile ? "show" : "hide"
         }`}
       >
-        <div class="user-info">
+        <div class="user-info d-flex">
           <img src={admini} alt="user profile pic" />
           <div>
-            <h3>Administrator</h3>
+            <h3 className="text-light text-center">Administrator</h3>
           </div>
         </div>
         <hr />
