@@ -186,7 +186,10 @@ function App() {
           path="/admin"
           element={
             <ProtectedRoute>
-              <AdminDashboard />
+              <AdminDashboard
+                toggleVisibility={toggleVisibility}
+                isVisible={isVisible}
+              />
             </ProtectedRoute>
           }
         />
