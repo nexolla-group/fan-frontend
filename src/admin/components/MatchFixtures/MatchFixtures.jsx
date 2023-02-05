@@ -1,49 +1,111 @@
+import axios from "axios";
 import React from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { errorHandler, toastMessage } from "../../../helpers";
+import TimePicker from "react-time-picker";
+
 import AdminNavbar from "../adminNavbar/AdminNavbar";
 import Sidebar from "../sidebar/Sidebar";
 import FixturesAndResultsTable from "./FixturesAndResultsTable";
 import "./MatchFixtures.css";
 
 function MatchFixtures({ isVisible, toggleVisibility }) {
+  const { token } = useSelector((state) => state.user);
+  const [home, setHome] = useState("");
+  const [away, setAway] = useState("");
+  const [date, setDate] = useState("");
+  // const [time, setTime] = useState("");
+  const [location, setLocation] = useState("");
+  const [value, onChange] = useState("10:00");
+
+  const Addfixture = (e) => {
+    e.preventDefault();
+
+    const data = {
+      home,
+      away,
+      date,
+      time: value,
+      stadium: location,
+      token,
+    };
+    axios
+      .post(process.env.REACT_APP_BACKEND_URL + "/api/fixtures", data)
+      .then((res) => {
+        console.log(res);
+        setHome("");
+        setAway("");
+        setDate("");
+        setLocation("");
+        onChange("");
+        toastMessage("success", "Fixture saved");
+      })
+      .catch((error) => {
+        console.log("save fixure error", error);
+        errorHandler(error);
+      });
+    console.log("time", value);
+  };
+
   return (
     <>
-      <div className="Home">
+      <div className='Home'>
         {isVisible && <Sidebar />}
-        <div className="homeContainer">
+        <div className='homeContainer'>
           <AdminNavbar toggleVisibility={toggleVisibility} />
-          <div className="Fixturescontainer">
-            <div className="fixtures">
+          <div className='Fixturescontainer'>
+            <div className='fixtures'>
               <h2>Enter Upcoming Fixtures</h2>
-              <form>
+              <form onSubmit={Addfixture}>
                 <label>Home Team</label>
-                <input type="text" placeholder="Enter Home Team" />
+                <input
+                  type='text'
+                  placeholder='Enter Home Team'
+                  value={home}
+                  onChange={(e) => setHome(e.target.value)}
+                />
                 <label>Away Team</label>
-                <input type="text" placeholder="Enter Away Team" />
+                <input
+                  type='text'
+                  placeholder='Enter Away Team'
+                  value={away}
+                  onChange={(e) => setAway(e.target.value)}
+                />
                 <label>Date</label>
-                <input type="text" placeholder="Enter Date" />
+                <input
+                  type='date'
+                  placeholder='Enter Date'
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+                <label>Hour</label>
+                <TimePicker onChange={onChange} value={value} />
                 <label>Location</label>
                 <input
-                  type="text"
-                  placeholder="Enter Location or stadium name"
+                  type='text'
+                  placeholder='Enter Location or stadium name'
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
                 />
-                <input type="submit" value="Save" />
+                <input type='submit' value='Save' />
               </form>
             </div>
-            <div className="results">
+            <div className='results'>
               <h2>Enter Recent Results</h2>
               <form>
                 <label>Home Team</label>
-                <input type="text" placeholder="Enter Home Team" />
+                <input type='text' placeholder='Enter Home Team' />
                 <label>Away Team</label>
-                <input type="text" placeholder="Enter Away Team" />
+                <input type='text' placeholder='Enter Away Team' />
                 <label>Result</label>
-                <input type="text" placeholder="Enter Result" />
+                <input type='text' placeholder='Enter Result' />
                 <label>Location</label>
                 <input
-                  type="text"
-                  placeholder="Enter Location or stadium name"
+                  type='text'
+                  placeholder='Enter Location or stadium name'
                 />
-                <input type="submit" value="Save" />
+                <input type='submit' value='Save' />
               </form>
             </div>
           </div>
