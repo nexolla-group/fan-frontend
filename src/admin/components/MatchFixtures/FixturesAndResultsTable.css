@@ -3,8 +3,8 @@
    margin-top: 1rem;
 }
 .TableContainer h2{
-    font-size: 22px;
-    color: var(--color-footer);
+    font-size: 18px;
+    color: var(--color-text);
     font-weight: 700;
 }
 .TableContainer table {
@@ -15,12 +15,14 @@
 
   .TableContainer td{
     color: var(--color-footer) !important;
+    background-color: #fff !important;
   }
   
  .TableContainer th, td {
     border: 1px solid #dddddd;
     padding: 8px;
     text-align: left;
+
   }
   
 .TableContainer th {
@@ -60,12 +62,16 @@
       content: "Date";
     }
     td:nth-of-type(2):before {
-      content: "Home Team";
+      content: "Location";
     }
     td:nth-of-type(3):before {
-      content: "Away Team";
+      content: "Home Team";
     }
     td:nth-of-type(4):before {
+      content: "Away Team";
+    }
+    td:nth-of-type(5):before {
       content: "Result";
     }
+   
   }

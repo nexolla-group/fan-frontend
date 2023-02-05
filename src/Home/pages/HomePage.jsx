@@ -18,10 +18,11 @@ const HomePage = () => {
           <Header />
           <WhatPlatform />
           <Features />
-          {/* <Possibility /> */}
-          <div className="bg-light">
+
+          <div style={{ padding: "0 3rem" }}>
             <FixturesAndResultsTable />
           </div>
+
           <CallToAction />
           {/* <FixturesAndResults /> */}
           <Footer />
