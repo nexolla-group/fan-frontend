@@ -4,7 +4,7 @@ import platformLogo from "../../../assets/SunriseLogo.png";
 const FooterWithCopyright = () => {
   return (
     <>
-      <div style={{ backgroundColor: "var(--color-footer)" }}>
+      <div style={{ backgroundColor: "var(--color-footer)", padding: "1rem" }}>
         <div className="platform__footer-links">
           <div className="platform__footer-links_logo">
             <img src={platformLogo} alt="logo" />

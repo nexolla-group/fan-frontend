@@ -36,6 +36,8 @@ import UserProfile from "./pages/UserProfiles/UserProfile";
 import ContributionsProgress from "./admin/components/contributions/ContributionsProgress";
 import UserTransactions from "./admin/components/transactions/UserTransactions";
 import PrintUserTransactions from "./admin/components/transactions/PrintUserTransactions";
+import MatchFixtures from "./admin/components/MatchFixtures/MatchFixtures";
+import Results from "./admin/components/Results/Results";
 
 function App() {
   const dispatch = useDispatch();
@@ -210,10 +212,18 @@ function App() {
           }
         />
         <Route
-          path="/admin/fixtures"
+          path="/admin/Fixtures"
           element={
             <ProtectedRoute>
-              <Feaxtures />
+              <MatchFixtures />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/Results"
+          element={
+            <ProtectedRoute>
+              <Results />
             </ProtectedRoute>
           }
         />

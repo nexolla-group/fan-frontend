@@ -1,6 +1,5 @@
 import React from "react";
 import "./featured.scss";
-import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
@@ -17,8 +16,7 @@ const Featured = ({ group }) => {
     <div className="featured">
       {totalPercentage >= 100 && <Congratulations group={group} />}
       <div className="top">
-        <h1 className="title">Total Target Reached</h1>
-        <MoreVertOutlinedIcon fontSize="small" />
+        <h1 className="title fw-bold">{group?._id && group.groupName}</h1>
       </div>
       <div className="bottom">
         <div className="featuredChart">

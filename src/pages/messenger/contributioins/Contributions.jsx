@@ -1,4 +1,5 @@
 import React from "react";
+import FixturesAndResultsTable from "../../../admin/components/MatchFixtures/FixturesAndResultsTable";
 import { Navbar } from "../../../Home/Components";
 import { Features, Possibility } from "../../../Home/containers";
 import FooterWithCopyright from "../../../Home/containers/footer/FooterWithCopyright";
@@ -11,8 +12,11 @@ const Contributions = () => {
       <div className="contributions__container">
         <Possibility />
         <Features />
+        <div className="bg-white">
+          <FixturesAndResultsTable />
+        </div>
+        <FooterWithCopyright />
       </div>
-      <FooterWithCopyright />
     </>
   );
 };

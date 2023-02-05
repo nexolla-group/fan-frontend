@@ -11,7 +11,7 @@ import admini from "../../../assets/admin.jpg";
 
 import { Link, NavLink } from "react-router-dom";
 
-const AdminNavbar = () => {
+const AdminNavbar = ({ isVisible, setIsVisible, toggleVisibility }) => {
   const [showProfile, setShowProfile] = useState(false);
 
   const handleClick = () => {
@@ -29,7 +29,10 @@ const AdminNavbar = () => {
             </div>
             <div className="items">
               <div className="item">
-                <FullscreenExitOutlinedIcon className="icon" />
+                <FullscreenExitOutlinedIcon
+                  onClick={toggleVisibility}
+                  className="icon"
+                />
               </div>
               <div className="item">
                 <NotificationsNoneRoundedIcon className="icon" />
