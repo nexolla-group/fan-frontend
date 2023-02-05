@@ -78,33 +78,33 @@ const AvairableGroups = () => {
   return (
     <>
       <Navbar />
-      <div className="container-fluid">
+      <div className='container-fluid'>
         {isLoading ? (
           <>
-            <div className="wrapper">
-              <div className="header">
-                <h1 className="header__title">List of available groups</h1>
-                <h2 className="header__subtitle text-dark ">
+            <div className='wrapper'>
+              <div className='header'>
+                <h1 className='header__title'>List of available groups</h1>
+                <h2 className='header__subtitle text-dark '>
                   Join the group and start collaboration
                 </h2>
               </div>
-              <div className="cards">
+              <div className='cards'>
                 {groups.map((group, i) => (
-                  <div className="card" key={i}>
+                  <div className='card' key={i}>
                     <div
-                      className="card__inner groupDesc p-4 d-block"
-                      data-toggle="tooltip"
-                      data-placement="top"
+                      className='card__inner groupDesc p-4 d-block'
+                      data-toggle='tooltip'
+                      data-placement='top'
                       title={group.description}
                     >
-                      <span className="d-block">{group.groupName}</span>
+                      <span className='d-block'>{group.groupName}</span>
                       {joinedGroup.find(
                         (item) => item.groupId === group._id
                       ) ? (
                         <>
                           <button
                             onClick={() => handleLeaveTheGroup(group._id)}
-                            className="btn mt-4 btn-warning"
+                            className='btn mt-4 btn-warning'
                           >
                             Leave the group
                           </button>
@@ -112,11 +112,11 @@ const AvairableGroups = () => {
                       ) : (
                         <>
                           <button
-                            className="btn btn-primary mt-4"
-                            role="button"
+                            className='btn btn-primary mt-4'
+                            role='button'
                             onClick={() => handleJoinGroup(group._id)}
                           >
-                            {joining ? "Joining..." : "Join Group"}
+                            {joining ? "Join Group" : "Join Group"}
                           </button>
                         </>
                       )}
@@ -128,9 +128,9 @@ const AvairableGroups = () => {
           </>
         ) : (
           <>
-            <div className="wait-container">
-              <div className="wait-animation"></div>
-              <div className="wait-text">Please Wait</div>
+            <div className='wait-container'>
+              <div className='wait-animation'></div>
+              <div className='wait-text'>Please Wait</div>
             </div>
           </>
         )}
