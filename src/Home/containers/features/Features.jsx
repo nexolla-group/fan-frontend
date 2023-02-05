@@ -22,7 +22,7 @@ const Features = () => {
     <div className="platform__features section__padding" id="newsAndGarelly">
       <div className="platform__features-heading">
         <h1 style={{ marginLeft: "1rem" }} className="gradient__text">
-          Trending News
+          News
         </h1>
       </div>
       <div className="platform__features-container">

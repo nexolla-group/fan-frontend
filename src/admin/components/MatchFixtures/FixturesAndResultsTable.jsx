@@ -18,15 +18,15 @@ function FixturesAndResultsTable() {
             <td>03/02/2023</td>
             <td>19:00</td>
             <td>Nyagatare Stadium</td>
-            <td>Team A</td>
-            <td>Team B</td>
+            <td>Sunrise FC</td>
+            <td>Gasogi FC</td>
           </tr>
           <tr>
             <td>04/02/2023</td>
             <td>20:30</td>
             <td>Amahoro National Stadium</td>
-            <td>Team C</td>
-            <td>Team D</td>
+            <td>Rayon Sport FC</td>
+            <td>Sunrise FC</td>
           </tr>
         </table>
 
@@ -34,21 +34,24 @@ function FixturesAndResultsTable() {
         <table>
           <tr>
             <th>Date</th>
+            <th>Location</th>
             <th>Home Team</th>
             <th>Away Team</th>
             <th>Result</th>
           </tr>
           <tr>
             <td>01/02/2023</td>
-            <td>Team A</td>
-            <td>Team B</td>
-            <td>2-0</td>
+            <td>Nyagatare Stadium</td>
+            <td>Sunrise FC</td>
+            <td>Gasogi FC</td>
+            <td>2-2</td>
           </tr>
           <tr>
             <td>02/02/2023</td>
-            <td>Team C</td>
-            <td>Team D</td>
-            <td>1-1</td>
+            <td>Amahoro National Stadium</td>
+            <td>Rayon Sport FC</td>
+            <td>Sunrise FC</td>
+            <td>1-5</td>
           </tr>
         </table>
       </div>

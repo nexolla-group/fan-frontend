@@ -1,8 +1,8 @@
 import React from "react";
+import FixturesAndResultsTable from "../../admin/components/MatchFixtures/FixturesAndResultsTable";
 import { CallToAction, Navbar } from "../Components";
 import {
   Features,
-  FixturesAndResults,
   Footer,
   Header,
   Possibility,
@@ -18,7 +18,10 @@ const HomePage = () => {
           <Header />
           <WhatPlatform />
           <Features />
-          <Possibility />
+          {/* <Possibility /> */}
+          <div className="bg-light">
+            <FixturesAndResultsTable />
+          </div>
           <CallToAction />
           {/* <FixturesAndResults /> */}
           <Footer />
