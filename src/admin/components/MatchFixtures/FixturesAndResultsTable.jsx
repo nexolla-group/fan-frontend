@@ -18,7 +18,7 @@ function FixturesAndResultsTable() {
         setFixtures(
           res.data.data.filter((item) => item.isMatchEnded === false)
         );
-        // setPastFix(res.data.data.filter((item) => item.isMatchEnded == "true"));
+        setPastFix(res.data.data.filter((item) => item.isMatchEnded == true));
       })
       .catch((error) => {
         errorHandler(error);
