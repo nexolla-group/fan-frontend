@@ -62,14 +62,16 @@ const Featured = ({ group }) => {
               </div>
             </div>
             <div className="item">
-              <div className="itemTitle">Remaining</div>
+              <div className="itemTitle">
+                {group.target - group.targetReached > 0 ? "Remaining" : "Over"}
+              </div>
               <div className="itemResult positive">
                 <KeyboardArrowUpOutlinedIcon fontSize="small" />
                 <div className="resultAmount">
                   {kFormatter(
                     group.target - group.targetReached > 0
                       ? group.target - group.targetReached
-                      : "0"
+                      : group.targetReached - group.target
                   )}
                   Rwf
                 </div>
