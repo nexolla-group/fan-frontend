@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./adminNavbar.scss";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
@@ -10,10 +10,17 @@ import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBullet
 import admini from "../../../assets/admin.jpg";
 
 import { Link, NavLink } from "react-router-dom";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import Notifications from "../Notifications/Notifications";
 
-const AdminNavbar = () => {
+const AdminNavbar = ({ toggleVisibility }) => {
   const [showProfile, setShowProfile] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
 
+  const handleClickNotifications = () => {
+    setShowNotifications(!showNotifications);
+  };
   const handleClick = () => {
     setShowProfile(!showProfile);
   };
@@ -29,15 +36,18 @@ const AdminNavbar = () => {
             </div>
             <div className="items">
               <div className="item">
-                <FullscreenExitOutlinedIcon className="icon" />
+                <FullscreenExitOutlinedIcon
+                  onClick={toggleVisibility}
+                  className="icon"
+                />
               </div>
-              <div className="item">
+              <div className="item" onClick={handleClickNotifications}>
                 <NotificationsNoneRoundedIcon className="icon" />
-                <div className="counter">17</div>
+                {/* <div className="counter">17</div> */}
               </div>
               <div className="item">
                 <ChatBubbleOutlineRoundedIcon className="icon" />
-                <div className="counter">2</div>
+                {/* <div className="counter">2</div> */}
               </div>
               <div className="item" onClick={handleClick}>
                 <FormatListBulletedOutlinedIcon className="icon" />
@@ -70,6 +80,11 @@ const AdminNavbar = () => {
           <span>-</span>
         </a>
       </div>
+      {showNotifications && (
+        <div className="container-fluid">
+          <Notifications />
+        </div>
+      )}
     </>
   );
 };

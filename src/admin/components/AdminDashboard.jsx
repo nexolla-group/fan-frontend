@@ -5,18 +5,20 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import "./AdminDashboard.scss";
 import AdminNavbar from "./adminNavbar/AdminNavbar";
-import Featured from "./featuresChart/Featured";
+import ContributionsProgress from "./contributions/ContributionsProgress";
+// import Featured from "./featuresChart/Featured";
 import Chart from "./normalChart/Chart";
 import Sidebar from "./sidebar/Sidebar";
 
 import Widget from "./widget/Widget";
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ isVisible, toggleVisibility }) => {
   const { token } = useSelector((state) => state.user);
   const [users, setUsers] = useState([]);
   const [posts, setPosts] = useState([]);
   const [groups, setGroups] = useState([]);
   const [transactions, setTransactions] = useState([]);
+
   const fetchUsers = () => {
     axios
       .get(process.env.REACT_APP_BACKEND_URL + "/api/users/all")
@@ -61,22 +63,34 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <div className='Home'>
-        <Sidebar />
-        <div className='homeContainer'>
-          <AdminNavbar />
-          <div className='widgets'>
-            <Widget type='user' amount={users.length} />
-            <Widget type='transactions' amount={transactions.length} />
-            <Widget type='posts' amount={posts.length} />
-            <Widget type='groups' amount={groups.length} />
+      <div className="Home">
+        {isVisible && <Sidebar />}
+
+        <div className="homeContainer">
+          <AdminNavbar toggleVisibility={toggleVisibility} />
+          <div className="widgets">
+            <div className="row w-100">
+              <div className="col col-md-3 col-sm-12 mb-4">
+                <Widget type="user" amount={users.length} />
+              </div>
+              <div className="col col-md-3 col-sm-12">
+                <Widget type="transactions" amount={transactions.length} />
+              </div>
+              <div className="col col-md-3 col-sm-12">
+                <Widget type="posts" amount={posts.length} />
+              </div>
+              <div className="col col-md-3 col-sm-12">
+                <Widget type="groups" amount={groups.length} />
+              </div>
+            </div>
           </div>
-          <div className='charts-container'>
+          <div className="charts-container">
             {/* <Featured /> */}
-            <Chart />
+            {/* <Chart /> */}
+            <ContributionsProgress />
           </div>
-          <div className='listContainer'>
-            <div className='listTitle'>Latest Transctions</div>
+          <div className="listContainer">
+            <div className="listTitle">Latest Transctions</div>
             {/* <DataTable /> */}
           </div>
         </div>

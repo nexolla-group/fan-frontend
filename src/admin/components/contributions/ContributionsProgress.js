@@ -29,15 +29,13 @@ export default function ContributionsProgress() {
   }, [group]);
 
   return (
-    <div className='Home'>
-      <Sidebar />
-      <div className='homeContainer'>
-        <AdminNavbar />
-        <div className='tasks'>
-          <div className='body'>
-            <div className='row'>
+    <div className="Home">
+      <div className="homeContainer">
+        <div className="tasks">
+          <div className="body">
+            <div className="row">
               {group.map((item) => (
-                <div className='col col-lg-4 col-md-4 col-sm-12'>
+                <div className="col col-lg-4 col-md-4 col-sm-12">
                   <Featured group={item} />
                 </div>
               ))}

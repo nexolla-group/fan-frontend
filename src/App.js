@@ -6,7 +6,7 @@ import Register from "./pages/register/Register";
 import Home from "./Home/pages/HomePage";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Messenger from "./pages/messenger/Messenger";
 
@@ -36,8 +36,16 @@ import UserProfile from "./pages/UserProfiles/UserProfile";
 import ContributionsProgress from "./admin/components/contributions/ContributionsProgress";
 import UserTransactions from "./admin/components/transactions/UserTransactions";
 import PrintUserTransactions from "./admin/components/transactions/PrintUserTransactions";
+import MatchFixtures from "./admin/components/MatchFixtures/MatchFixtures";
+import Results from "./admin/components/Results/Results";
 
 function App() {
+  const [isVisible, setIsVisible] = useState(true);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showMessaging, setShowMessaging] = useState(false);
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.user);
   //socket connection
@@ -180,7 +188,10 @@ function App() {
           path="/admin"
           element={
             <ProtectedRoute>
-              <AdminDashboard />
+              <AdminDashboard
+                toggleVisibility={toggleVisibility}
+                isVisible={isVisible}
+              />
             </ProtectedRoute>
           }
         />
@@ -188,7 +199,10 @@ function App() {
           path="/admin/Dashboard"
           element={
             <ProtectedRoute>
-              <AdminDashboard />
+              <AdminDashboard
+                toggleVisibility={toggleVisibility}
+                isVisible={isVisible}
+              />
             </ProtectedRoute>
           }
         />
@@ -196,7 +210,10 @@ function App() {
           path="/admin/transactions"
           element={
             <ProtectedRoute>
-              <Transactions />
+              <Transactions
+                toggleVisibility={toggleVisibility}
+                isVisible={isVisible}
+              />
             </ProtectedRoute>
           }
         />
@@ -205,15 +222,29 @@ function App() {
           path="/admin/posts"
           element={
             <ProtectedRoute>
-              <Posts />
+              <Posts
+                toggleVisibility={toggleVisibility}
+                isVisible={isVisible}
+              />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/admin/fixtures"
+          path="/admin/Fixtures"
           element={
             <ProtectedRoute>
-              <Feaxtures />
+              <MatchFixtures
+                toggleVisibility={toggleVisibility}
+                isVisible={isVisible}
+              />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/Results"
+          element={
+            <ProtectedRoute>
+              <Results />
             </ProtectedRoute>
           }
         />
@@ -221,7 +252,10 @@ function App() {
           path="/admin/users"
           element={
             <ProtectedRoute>
-              <Users />
+              <Users
+                toggleVisibility={toggleVisibility}
+                isVisible={isVisible}
+              />
             </ProtectedRoute>
           }
         />
@@ -229,7 +263,10 @@ function App() {
           path="/admin/groups"
           element={
             <ProtectedRoute>
-              <Group />
+              <Group
+                toggleVisibility={toggleVisibility}
+                isVisible={isVisible}
+              />
             </ProtectedRoute>
           }
         />

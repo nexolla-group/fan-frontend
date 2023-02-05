@@ -1,16 +1,14 @@
 import React from "react";
 import "./sidebar.scss";
 import {
-  AiOutlineWindows,
   AiTwotoneNotification,
   AiOutlineGlobal,
   AiOutlineAppstore,
 } from "react-icons/ai";
 import sunriseLogo from "../../../assets/SunriseLogo.png";
 import { Link, NavLink } from "react-router-dom";
-import { DonutSmall, GroupOutlined, Person2 } from "@mui/icons-material";
-import { LinearProgress } from "@mui/material";
-
+import { GroupOutlined, Person2 } from "@mui/icons-material";
+import SportsSoccerIcon from "@mui/icons-material/SportsSoccer";
 const links = [
   {
     title: "Dashboard",
@@ -29,6 +27,14 @@ const links = [
         name: "Posts",
         icon: <AiTwotoneNotification />,
       },
+      {
+        name: "Fixtures",
+        icon: <SportsSoccerIcon fontSize="small" />,
+      },
+      // {
+      //   name: "Results",
+      //   icon: <SportsSoccerIcon fontSize="small" />,
+      // },
     ],
   },
   {
@@ -38,10 +44,7 @@ const links = [
         name: "Groups",
         icon: <GroupOutlined />,
       },
-      {
-        name: "Progress",
-        icon: <DonutSmall />,
-      },
+
       {
         name: "Transactions",
         icon: <AiOutlineGlobal />,
@@ -53,7 +56,7 @@ const links = [
     ],
   },
 ];
-const Sidebar = () => {
+const Sidebar = ({ isVisible, setIsVisible, toggleVisibility }) => {
   return (
     <>
       <div className="Sidebar">

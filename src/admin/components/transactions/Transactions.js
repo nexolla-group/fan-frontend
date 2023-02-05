@@ -10,7 +10,7 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import "./userTransactions.css";
 
-export default function Transactions() {
+export default function Transactions({ isVisible, toggleVisibility }) {
   const { token } = useSelector((state) => state.user);
   const [transactions, setTransacions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -101,15 +101,15 @@ export default function Transactions() {
 
   return (
     <>
-      <div className='Home'>
-        <Sidebar />
-        <div className='homeContainer'>
-          <AdminNavbar />
-          <div className='container-fluid p-5'>
-            <div className='row mb-3'>
-              <div className='col col-md-6'>
+      <div className="Home">
+        {isVisible && <Sidebar />}
+        <div className="homeContainer">
+          <AdminNavbar toggleVisibility={toggleVisibility} />
+          <div className="container-fluid p-5">
+            <div className="row mb-3">
+              <div className="col col-md-6">
                 <Typography
-                  variant='h5'
+                  variant="h5"
                   mb={2}
                   sx={{ textAlign: "Left", fontWeight: 500 }}
                   className={`${animation}`}
@@ -117,25 +117,25 @@ export default function Transactions() {
                   Sunrise FC | Transactions
                 </Typography>
               </div>
-              <div className='col col-md-6 text-end'>
+              <div className="col col-md-6 text-end">
                 <Typography
                   mb={2}
                   sx={{ textAlign: "Left", fontWeight: 500 }}
-                  variant='h5'
+                  variant="h5"
                   className={` ${animation}`}
                 >
                   Total Contributions Made: {totalAmount} Rwf
                 </Typography>
               </div>
             </div>
-            <div className='row mb-3'>
-              <div className='col col-md-6'>
+            <div className="row mb-3">
+              <div className="col col-md-6">
                 <form>
-                  <div className='form-group'>
+                  <div className="form-group">
                     <input
-                      type='text'
-                      className='form-control'
-                      placeholder='Search...'
+                      type="text"
+                      className="form-control"
+                      placeholder="Search..."
                       value={searchInput}
                       onChange={handleSearchInputChange}
                     />
@@ -155,8 +155,8 @@ export default function Transactions() {
               </Box>
             </TableContainer>
 
-            <Link to='/printuserTransactions' target='blank'>
-              <button className='btn btn-outline-secondary'>Print</button>
+            <Link to="/printuserTransactions" target="blank">
+              <button className="btn btn-outline-secondary">Print</button>
             </Link>
           </div>
         </div>

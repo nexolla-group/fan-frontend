@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-const Posts = () => {
+const Posts = ({ isVisible, toggleVisibility }) => {
   const { token } = useSelector((state) => state.user);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -150,36 +150,36 @@ const Posts = () => {
       .catch((error) => console.log(error));
   };
   return (
-    <div className='Home'>
-      <Sidebar />
-      <div className='homeContainer'>
-        <AdminNavbar />
-        <div className='row'>
-          <div className='col col-md-6 col-sm-12 col-12'>
+    <div className="Home">
+      {isVisible && <Sidebar />}
+      <div className="homeContainer">
+        <AdminNavbar toggleVisibility={toggleVisibility} />
+        <div className="row">
+          <div className="col col-md-6 col-sm-12 col-12">
             {" "}
-            <div className='blog-container'>
-              <h1 className='blog-title'>Add a Blog Post</h1>
+            <div className="blog-container">
+              <h1 className="blog-title">Add a Blog Post</h1>
               <form
                 className={`d-block bordered ${classes.root}`}
                 noValidate
-                autoComplete='off'
+                autoComplete="off"
               >
                 <div>
                   <TextField
-                    id='title'
-                    label='Title'
-                    variant='outlined'
-                    placeholder='Enter Title'
+                    id="title"
+                    label="Title"
+                    variant="outlined"
+                    placeholder="Enter Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
                 <div>
                   <TextField
-                    id='content'
-                    label='Content'
-                    variant='outlined'
-                    placeholder='Enter Content'
+                    id="content"
+                    label="Content"
+                    variant="outlined"
+                    placeholder="Enter Content"
                     multiline
                     rows={4}
                     value={content}
@@ -188,10 +188,10 @@ const Posts = () => {
                 </div>
                 <div>
                   <Fab
-                    variant='extended'
-                    size='medium'
-                    color='dark'
-                    aria-label='add'
+                    variant="extended"
+                    size="medium"
+                    color="dark"
+                    aria-label="add"
                     onClick={handlePost}
                   >
                     {postingBlog ? "Creating..." : "Create"}
@@ -200,31 +200,31 @@ const Posts = () => {
               </form>
             </div>
           </div>
-          <div className='col col-md-6 col-sm-12 col-12'>
+          <div className="col col-md-6 col-sm-12 col-12">
             {" "}
-            <div className='blog-container'>
-              <h1 className='blog-title'>Add a News & Media Garelly</h1>
+            <div className="blog-container">
+              <h1 className="blog-title">Add a News & Media Garelly</h1>
               <form
                 className={`d-block bordered ${classes.root}`}
                 noValidate
-                autoComplete='off'
+                autoComplete="off"
               >
                 <div>
                   <TextField
-                    id='title'
-                    label='Title'
-                    variant='outlined'
-                    placeholder='Enter Title'
+                    id="title"
+                    label="Title"
+                    variant="outlined"
+                    placeholder="Enter Title"
                     value={newsTitle}
                     onChange={(e) => setNewsTitle(e.target.value)}
                   />
                 </div>
                 <div>
                   <TextField
-                    id='content'
-                    label='Content'
-                    variant='outlined'
-                    placeholder='Enter Content'
+                    id="content"
+                    label="Content"
+                    variant="outlined"
+                    placeholder="Enter Content"
                     multiline
                     rows={4}
                     value={newsContent}
@@ -233,10 +233,10 @@ const Posts = () => {
                 </div>
                 <div>
                   <Fab
-                    variant='extended'
-                    size='medium'
-                    color='dark'
-                    aria-label='add'
+                    variant="extended"
+                    size="medium"
+                    color="dark"
+                    aria-label="add"
                     onClick={handleSubmit}
                   >
                     {postingNews ? "creating..." : "Create"}
@@ -246,8 +246,8 @@ const Posts = () => {
             </div>
           </div>
         </div>
-        <div className='row'>
-          <div className='col col-md-11 col-sm-12 col-12 m-2'>
+        <div className="row">
+          <div className="col col-md-11 col-sm-12 col-12 m-2">
             <h2 style={{ fontWeight: "700", marginLeft: "70px" }}>Blog Post</h2>
             <TableContainer component={Paper} className={`table ${animation}`}>
               <Box sx={{ width: "100%" }}>
