@@ -203,7 +203,7 @@ const Posts = ({ isVisible, toggleVisibility }) => {
           <div className="col col-md-6 col-sm-12 col-12">
             {" "}
             <div className="blog-container">
-              <h1 className="blog-title">Add a News & Media Garelly</h1>
+              <h1 className="blog-title">Add a News or Trends</h1>
               <form
                 className={`d-block bordered ${classes.root}`}
                 noValidate
