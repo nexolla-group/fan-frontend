@@ -1,9 +1,6 @@
-import UserHome from "./pages/userHome/UserHome";
-
 import Login from "./pages/login/Login";
-import Profile from "./pages/profile/Profile";
+
 import Register from "./pages/register/Register";
-import Home from "./Home/pages/HomePage";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -11,14 +8,7 @@ import { useEffect, useState } from "react";
 import Messenger from "./pages/messenger/Messenger";
 
 import HomePage from "./Home/pages/HomePage";
-import {
-  AdminDashboard,
-  Feaxtures,
-  Matches,
-  Users,
-  Posts,
-  Tasks,
-} from "./admin";
+import { AdminDashboard, Users, Posts } from "./admin";
 import ProtectedRoute from "./controllers/protected-route";
 import UnProtectedRoute from "./controllers/un-protected-route";
 import { io } from "socket.io-client";
@@ -41,8 +31,6 @@ import Results from "./admin/components/Results/Results";
 
 function App() {
   const [isVisible, setIsVisible] = useState(true);
-  const [showNotifications, setShowNotifications] = useState(false);
-  const [showMessaging, setShowMessaging] = useState(false);
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
@@ -71,7 +59,7 @@ function App() {
       <Routes>
         <Route
           exact
-          path="/"
+          path='/'
           element={
             <UnProtectedRoute>
               <HomePage />
@@ -79,7 +67,7 @@ function App() {
           }
         />
         <Route
-          path="/login"
+          path='/login'
           element={
             <UnProtectedRoute>
               <Login />
@@ -87,7 +75,7 @@ function App() {
           }
         />
         <Route
-          path="/register"
+          path='/register'
           element={
             <UnProtectedRoute>
               <Register />
@@ -95,7 +83,7 @@ function App() {
           }
         />
         <Route
-          path="/messenger"
+          path='/messenger'
           element={
             <ProtectedRoute>
               <Messenger />
@@ -103,7 +91,7 @@ function App() {
           }
         />
         <Route
-          path="/printuserTransactions"
+          path='/printuserTransactions'
           element={
             <ProtectedRoute>
               <PrintUserTransactions />
@@ -111,7 +99,7 @@ function App() {
           }
         />
         <Route
-          path="/userprofile"
+          path='/userprofile'
           element={
             <ProtectedRoute>
               <UserProfile />
@@ -119,7 +107,7 @@ function App() {
           }
         />
         <Route
-          path="/chatbox"
+          path='/chatbox'
           element={
             <ProtectedRoute>
               <ChatBox />
@@ -127,7 +115,7 @@ function App() {
           }
         />
         <Route
-          path="/contributions/:groupId"
+          path='/contributions/:groupId'
           element={
             <ProtectedRoute>
               <UserDashboard />
@@ -135,23 +123,16 @@ function App() {
           }
         />
         <Route
-          path="/userHome"
+          path='/userHome'
           element={
             <ProtectedRoute>
               <Contributions />
             </ProtectedRoute>
           }
         />
+
         <Route
-          path="/profile/:username"
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/logout"
+          path='/logout'
           element={
             <ProtectedRoute>
               <Logout />
@@ -159,7 +140,7 @@ function App() {
           }
         />
         <Route
-          path="/groups"
+          path='/groups'
           element={
             <ProtectedRoute>
               <AvairableGroups />
@@ -167,7 +148,7 @@ function App() {
           }
         />
         <Route
-          path="/userTransactions"
+          path='/userTransactions'
           element={
             <ProtectedRoute>
               <UserTransactions />
@@ -175,7 +156,7 @@ function App() {
           }
         />
         <Route
-          path="/groups"
+          path='/groups'
           element={
             <ProtectedRoute>
               <AvairableGroups />
@@ -185,7 +166,7 @@ function App() {
 
         {/* Admin Routes */}
         <Route
-          path="/admin"
+          path='/admin'
           element={
             <ProtectedRoute>
               <AdminDashboard
@@ -196,7 +177,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/Dashboard"
+          path='/admin/Dashboard'
           element={
             <ProtectedRoute>
               <AdminDashboard
@@ -207,7 +188,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/transactions"
+          path='/admin/transactions'
           element={
             <ProtectedRoute>
               <Transactions
@@ -219,7 +200,7 @@ function App() {
         />
 
         <Route
-          path="/admin/posts"
+          path='/admin/posts'
           element={
             <ProtectedRoute>
               <Posts
@@ -230,7 +211,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/Fixtures"
+          path='/admin/Fixtures'
           element={
             <ProtectedRoute>
               <MatchFixtures
@@ -241,7 +222,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/Results"
+          path='/admin/Results'
           element={
             <ProtectedRoute>
               <Results />
@@ -249,7 +230,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/users"
+          path='/admin/users'
           element={
             <ProtectedRoute>
               <Users
@@ -260,7 +241,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/groups"
+          path='/admin/groups'
           element={
             <ProtectedRoute>
               <Group
@@ -271,7 +252,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/progress"
+          path='/admin/progress'
           element={
             <ProtectedRoute>
               <ContributionsProgress />

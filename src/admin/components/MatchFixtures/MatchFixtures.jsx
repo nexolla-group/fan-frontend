@@ -11,13 +11,16 @@ import FixturesAndResultsTable from "./FixturesAndResultsTable";
 import "./MatchFixtures.css";
 
 function MatchFixtures({ isVisible, toggleVisibility }) {
+  const timezd = new Date();
+  const timezd1 = timezd.toString().split(" ");
+
   const { token } = useSelector((state) => state.user);
   const [home, setHome] = useState("");
   const [away, setAway] = useState("");
   const [date, setDate] = useState("");
   // const [time, setTime] = useState("");
   const [location, setLocation] = useState("");
-  const [value, onChange] = useState("10:00");
+  const [value, onChange] = useState(timezd1[4]);
 
   const Addfixture = (e) => {
     e.preventDefault();
@@ -45,7 +48,15 @@ function MatchFixtures({ isVisible, toggleVisibility }) {
         console.log("save fixure error", error);
         errorHandler(error);
       });
-    console.log("time", value);
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    axios
+      .get(process.env.REACT_APP_BACKEND_URL + "/api/fixtures/?token=" + token)
+      .then((res) => console.log("first", res))
+      .catch((error) => console.log(error));
+    // axios.put(process.env.REACT_APP_BACKEND_URL+"/api/fixtures")
   };
 
   return (
@@ -77,6 +88,7 @@ function MatchFixtures({ isVisible, toggleVisibility }) {
                   type='date'
                   placeholder='Enter Date'
                   value={date}
+                  min={`${timezd1[1]}/${timezd1[2]}/${timezd1[3]}]}`}
                   onChange={(e) => setDate(e.target.value)}
                 />
                 <label>Hour</label>
@@ -105,7 +117,7 @@ function MatchFixtures({ isVisible, toggleVisibility }) {
                   type='text'
                   placeholder='Enter Location or stadium name'
                 />
-                <input type='submit' value='Save' />
+                <input type='submit' value='Save' onClick={handleUpdate} />
               </form>
             </div>
           </div>

@@ -63,34 +63,34 @@ const AdminDashboard = ({ isVisible, toggleVisibility }) => {
 
   return (
     <>
-      <div className="Home">
+      <div className='Home'>
         {isVisible && <Sidebar />}
 
-        <div className="homeContainer">
+        <div className='homeContainer'>
           <AdminNavbar toggleVisibility={toggleVisibility} />
-          <div className="widgets">
-            <div className="row w-100">
-              <div className="col col-md-3 col-sm-12 mb-4">
-                <Widget type="user" amount={users.length} />
+          <div className='widgets'>
+            <div className='row w-100'>
+              <div className='col col-md-3 col-sm-12 mb-4'>
+                <Widget type='user' amount={users.length} />
               </div>
-              <div className="col col-md-3 col-sm-12">
-                <Widget type="transactions" amount={transactions.length} />
+              <div className='col col-md-3 col-sm-12'>
+                <Widget type='transactions' amount={transactions.length} />
               </div>
-              <div className="col col-md-3 col-sm-12">
-                <Widget type="posts" amount={posts.length} />
+              <div className='col col-md-3 col-sm-12'>
+                <Widget type='posts' amount={posts.length} />
               </div>
-              <div className="col col-md-3 col-sm-12">
-                <Widget type="groups" amount={groups.length} />
+              <div className='col col-md-3 col-sm-12'>
+                <Widget type='groups' amount={groups.length} />
               </div>
             </div>
           </div>
-          <div className="charts-container">
+          <div className='charts-container'>
             {/* <Featured /> */}
             {/* <Chart /> */}
             <ContributionsProgress />
           </div>
-          <div className="listContainer">
-            <div className="listTitle">Latest Transctions</div>
+          <div className='listContainer'>
+            <div className='listTitle'>Latest Transctions</div>
             {/* <DataTable /> */}
           </div>
         </div>
