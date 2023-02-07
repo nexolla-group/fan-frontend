@@ -65,7 +65,7 @@ export default function Transactions({ isVisible, toggleVisibility }) {
 
   const columns = useMemo(
     () => [
-      { field: "transactionId", headerName: "TransactionId", width: 200 },
+      { field: "transactionId", headerName: "transactionId", width: 200 },
       { field: "amount", headerName: "Amount|Rwf", width: 200 },
       { field: "senderName", headerName: "Sender Name", width: 200 },
       {
