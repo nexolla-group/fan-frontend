@@ -12,7 +12,7 @@ const Contributions = () => {
       <div className="contributions__container">
         <Possibility />
         <Features />
-        <div className="bg-white">
+        <div style={{ padding: "0 3rem" }}>
           <FixturesAndResultsTable />
         </div>
         <FooterWithCopyright />
