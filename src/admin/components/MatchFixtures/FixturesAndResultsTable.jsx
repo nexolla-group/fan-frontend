@@ -4,15 +4,17 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { errorHandler, toastMessage } from "../../../helpers";
+import EditFixture from "../editFixture/EditFixtures";
 import "./FixturesAndResultsTable.css";
 
 function FixturesAndResultsTable() {
   const [openEdit, setOpenEdit] = React.useState(false);
-  const { token } = useSelector((state) => state.user);
+  const { token, role } = useSelector((state) => state.user);
   const [fixtures, setFixtures] = useState([]);
   const [pastFix, setPastFix] = useState([]);
   const [loading, setLoding] = useState(false);
   const [fixtureToEdit, setFixtureToEdit] = useState([]);
+
   const fetchFixtures = () => {
     axios
       .get(process.env.REACT_APP_BACKEND_URL + "/api/fixtures/?token=" + token)
@@ -70,7 +72,7 @@ function FixturesAndResultsTable() {
               <th>Location</th>
               <th>Home Team</th>
               <th>Away Team</th>
-              <th>Action</th>
+              {role == "admin" ? <th>Action</th> : ""}
             </tr>
             {fixtures.map((item, i) => (
               <tr key={i}>
@@ -79,16 +81,20 @@ function FixturesAndResultsTable() {
                 <td>{item.stadium}</td>
                 <td>{item.home}</td>
                 <td>{item.away}</td>
-                <td>
-                  <Edit
-                    onClick={() => {
-                      handleOpenEdit();
-                      setFixtureToEdit(item);
-                    }}
-                  />{" "}
-                  &nbsp;&nbsp;&nbsp;
-                  <Delete onClick={() => handleDeleteFixture(item._id)} />
-                </td>
+                {role == "admin" ? (
+                  <td>
+                    <Edit
+                      onClick={() => {
+                        handleOpenEdit();
+                        setFixtureToEdit(item);
+                      }}
+                    />{" "}
+                    &nbsp;&nbsp;&nbsp;
+                    <Delete onClick={() => handleDeleteFixture(item._id)} />
+                  </td>
+                ) : (
+                  ""
+                )}
               </tr>
             ))}
           </table>
@@ -109,7 +115,7 @@ function FixturesAndResultsTable() {
             </tr>
             {pastFix.map((item, i) => (
               <tr key={i}>
-                <td>{item.date}</td>
+                <td>{new Date(item.date).toLocaleDateString()}</td>
                 <td>{item.stadium}</td>
                 <td>{item.home}</td>
                 <td>{item.away}</td>
@@ -119,6 +125,12 @@ function FixturesAndResultsTable() {
           </table>
         )}
       </div>
+      <EditFixture
+        open={openEdit}
+        setOpen={setOpenEdit}
+        fixture={fixtureToEdit}
+        fetchFixtures={fetchFixtures}
+      />
     </>
   );
 }

@@ -13,15 +13,14 @@ import "./MatchFixtures.css";
 function MatchFixtures({ isVisible, toggleVisibility }) {
   const timezd = new Date();
   const timezd1 = timezd.toString().split(" ");
-
   const { token } = useSelector((state) => state.user);
   const [home, setHome] = useState("");
   const [away, setAway] = useState("");
   const [date, setDate] = useState("");
-  // const [time, setTime] = useState("");
   const [location, setLocation] = useState("");
-  const [value, onChange] = useState(timezd1[4]);
-
+  const [value, setValue] = useState(timezd1[4]);
+  const [fixtures, setFixtures] = useState([]);
+  const [pastFix, setPastFix] = useState([]);
   const Addfixture = (e) => {
     e.preventDefault();
 
@@ -41,7 +40,7 @@ function MatchFixtures({ isVisible, toggleVisibility }) {
         setAway("");
         setDate("");
         setLocation("");
-        onChange("");
+        setValue("");
         toastMessage("success", "Fixture saved");
       })
       .catch((error) => {
@@ -50,15 +49,22 @@ function MatchFixtures({ isVisible, toggleVisibility }) {
       });
   };
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
+  const fetchFixtures = () => {
     axios
       .get(process.env.REACT_APP_BACKEND_URL + "/api/fixtures/?token=" + token)
-      .then((res) => console.log("first", res))
-      .catch((error) => console.log(error));
-    // axios.put(process.env.REACT_APP_BACKEND_URL+"/api/fixtures")
+      .then((res) => {
+        console.log("res ult response", res);
+        setFixtures(
+          res.data.data.filter((item) => item.isMatchEnded === false)
+        );
+        setPastFix(res.data.data.filter((item) => item.isMatchEnded == true));
+      })
+      .catch((error) => {
+        errorHandler(error);
+        console.log("error from fetch all fixtures:", error);
+      });
   };
-
+  console.log("fixtures", fixtures);
   return (
     <>
       <div className='Home'>
@@ -92,7 +98,7 @@ function MatchFixtures({ isVisible, toggleVisibility }) {
                   onChange={(e) => setDate(e.target.value)}
                 />
                 <label>Hour</label>
-                <TimePicker onChange={onChange} value={value} />
+                <TimePicker onChange={setValue} value={value} />
                 <label>Location</label>
                 <input
                   type='text'
@@ -103,25 +109,14 @@ function MatchFixtures({ isVisible, toggleVisibility }) {
                 <input type='submit' value='Save' />
               </form>
             </div>
-            <div className='results'>
-              <h2>Enter Recent Results</h2>
-              <form>
-                <label>Home Team</label>
-                <input type='text' placeholder='Enter Home Team' />
-                <label>Away Team</label>
-                <input type='text' placeholder='Enter Away Team' />
-                <label>Result</label>
-                <input type='text' placeholder='Enter Result' />
-                <label>Location</label>
-                <input
-                  type='text'
-                  placeholder='Enter Location or stadium name'
-                />
-                <input type='submit' value='Save' onClick={handleUpdate} />
-              </form>
-            </div>
           </div>
-          <FixturesAndResultsTable />
+          <FixturesAndResultsTable
+            fixtures={fixtures}
+            pastFix={pastFix}
+            setFixtures={setFixtures}
+            setPastFix={setPastFix}
+            fetchFixtures={fetchFixtures}
+          />
         </div>
       </div>
     </>
