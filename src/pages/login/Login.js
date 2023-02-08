@@ -51,6 +51,7 @@ export default function Login() {
         dispatch(setRole(res.data.role));
         dispatch(setToken(res.data.token));
         setIsFetching(false);
+        // navigate("/dashboard");
         toastMessage("success", "Logged in");
       })
       .catch((error) => {

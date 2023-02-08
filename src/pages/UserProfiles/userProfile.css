@@ -1,60 +1,158 @@
-.grid-container {
+.ProfileContainer {
+  background-color: whitesmoke;
+}
+
+.user-page {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 20px;
+  padding: 1rem;
+  background: #fff;
+  color: var(--color-footer);
+  margin: 0;
+  background-color: whitesmoke;
 }
 
-.left-grid {
-  grid-column: 1/2;
-  background-color: #f2f2f2;
-}
-
-.center-grid {
-  grid-column: 2/3;
-  background-color: #f2f2f2;
-}
-
-.right-grid {
-  grid-column: 3/4;
-  background-color: #f2f2f2;
-}
-
-.user-profile {
-  display: flex;
+.user-header {
+  display: block;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 20px;
   align-items: center;
-}
-.user-profile img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
+  text-align: center;
+  background-color: #fff;
+  margin-top: 1rem;
+  border-radius: 5px;
+  height: 400px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-.accordion button {
-  background-color: #f2f2f2;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  text-align: left;
+.user-photo {
+  text-align: center;
+  margin-top: 1rem;
 }
-.accordion ul {
+
+.user-photo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.user-info {
+  color: var(--color-footer) !important;
+  display: block;
+  font-weight: 600 !important;
+}
+
+.user-info h2 {
+  margin: 0;
+}
+
+.user-section {
+  border: 1px solid rgb(231, 231, 231);
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.group-list,
+.post-list {
   list-style: none;
   padding: 0;
-  margin: 0;
-  background-color: #f2f2f2;
-}
-.accordion ul li {
-  padding: 10px;
-}
-.accordion ul li a {
-  text-decoration: none;
-  color: #000;
 }
 
-@media (max-width: 600px) {
-  .grid-container {
+.update-user-details {
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 0 1rem;
+  display: block;
+  background-color: #fff;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.user-basic-info {
+  padding-top: 0;
+  padding-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.user-basic-info ul {
+  margin: 0;
+  padding: 1em 0;
+}
+
+.user-basic-info ul li {
+  list-style-type: none;
+  margin: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #808080;
+}
+
+.user-basic-info ul li input {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  width: 60%;
+  margin: 0 1rem;
+  border-bottom: 1px solid rgb(231, 231, 231);
+  border-radius: 0;
+}
+
+.user-basic-info button {
+  float: right;
+  margin-top: 2px;
+}
+
+.update-user-details input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.update-password {
+  padding: 1rem 0;
+  margin-top: 1rem;
+}
+
+.update-password ul {
+  padding: 1rem 0;
+  margin: 1rem 0;
+}
+
+.update-password ul li {
+  list-style-type: none;
+  margin: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #808080;
+}
+
+.update-password ul li input {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  width: 60%;
+  margin: 0 1rem;
+  border-bottom: 1px solid rgb(231, 231, 231);
+  border-radius: 0;
+}
+
+.update-password button {
+  float: right;
+}
+
+@media (max-width: 768px) {
+  .user-page {
     grid-template-columns: 1fr;
   }
-  .left-grid, .center-grid, .right-grid {
-    grid-column: 1/2;
+  .user-header {
+    grid-template-columns: 1fr;
   }
 }/*# sourceMappingURL=userProfile.css.map */

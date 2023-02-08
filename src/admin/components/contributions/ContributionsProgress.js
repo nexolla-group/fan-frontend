@@ -29,17 +29,15 @@ export default function ContributionsProgress() {
   }, [group]);
 
   return (
-    <div className="Home">
-      <div className="homeContainer">
-        <div className="tasks">
-          <div className="body">
-            <div className="row">
-              {group.map((item) => (
-                <div className="col col-lg-4 col-md-4 col-sm-12">
-                  <Featured group={item} />
-                </div>
-              ))}
-            </div>
+    <div className='Home' style={{ width: "100%" }}>
+      <div className='homeContainer'>
+        <div className='body'>
+          <div className='row'>
+            {group.map((item) => (
+              <div className='col col-lg-4 col-md-4 col-sm-12'>
+                <Featured group={item} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

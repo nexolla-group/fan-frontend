@@ -51,7 +51,7 @@ function MatchFixtures({ isVisible, toggleVisibility }) {
 
   const fetchFixtures = () => {
     axios
-      .get(process.env.REACT_APP_BACKEND_URL + "/api/fixtures/?token=" + token)
+      .get(process.env.REACT_APP_BACKEND_URL + "/api/fixtures")
       .then((res) => {
         console.log("res ult response", res);
         setFixtures(

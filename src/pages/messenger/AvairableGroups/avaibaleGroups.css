@@ -121,34 +121,53 @@
   transform: scale(1);
 }
 
-.alertMessage {
-  background-color: #f44336; /* Red */
-  color: white;
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
-  margin: 10px 0;
-  -webkit-animation: fadeIn 1s;
-          animation: fadeIn 1s;
+.wait-container {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-@-webkit-keyframes fadeIn {
+.wait-animation {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #333;
+  border-top-color: #fff;
+  border-radius: 50%;
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@-webkit-keyframes spin {
   from {
-    opacity: 0;
+    transform: rotate(0deg);
   }
   to {
-    opacity: 1;
+    transform: rotate(360deg);
   }
 }
 
-@keyframes fadeIn {
+@keyframes spin {
   from {
-    opacity: 0;
+    transform: rotate(0deg);
   }
   to {
-    opacity: 1;
+    transform: rotate(360deg);
   }
 }
+.wait-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
 @media screen and (min-width: 992px) {
   .card:nth-of-type(3n+2) .card__expander {
     margin-left: calc(-100% - 30px);
