@@ -116,7 +116,7 @@ const AvairableGroups = () => {
                             role='button'
                             onClick={() => handleJoinGroup(group._id)}
                           >
-                            {joining ? "Join Group" : "Join Group"}
+                            {joining ? "joining..." : "Join Group"}
                           </button>
                         </>
                       )}
