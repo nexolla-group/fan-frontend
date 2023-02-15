@@ -61,8 +61,8 @@ const Groups = ({ isVisible, toggleVisibility }) => {
       )
       .then((res) => {
         toastMessage("success", "group deleted!");
-
-        setGroups(groups.filter((item) => item.groupDetails._id != id));
+        fetchGroups();
+        // setGroups(groups.filter((item) => item.groupDetails._id != id));
       })
       .catch((error) => console.log(error));
   };
