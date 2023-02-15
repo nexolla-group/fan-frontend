@@ -13,13 +13,13 @@ const Featured = ({ group }) => {
     ? ((group.targetReached * 100) / group.target).toFixed(2)
     : 0;
   return (
-    <div className="featured">
+    <div className='featured'>
       {totalPercentage >= 100 && <Congratulations group={group} />}
-      <div className="top">
-        <h1 className="title fw-bold">{group?._id && group.groupName}</h1>
+      <div className='top'>
+        <h1 className='title fw-bold'>{group?._id && group.groupName}</h1>
       </div>
-      <div className="bottom">
-        <div className="featuredChart">
+      <div className='bottom'>
+        <div className='featuredChart'>
           <CircularProgressbarWithChildren
             value={
               group?._id
@@ -38,43 +38,43 @@ const Featured = ({ group }) => {
             </div>
           </CircularProgressbarWithChildren>
         </div>
-        <p className="title">Total Contributions made</p>
-        <p className="amount">
+        <p className='title'>Total Contributions made</p>
+        <p className='amount'>
           {group?._id && `${group.targetReached}`} {""} Rwf
         </p>
-        <p className="description">{group?._id && group.description}</p>
+        <p className='description'>{group?._id && group.description}</p>
         {group?._id && (
-          <div className="summary">
-            <div className="item">
-              <div className="itemTitle">Target</div>
-              <div className="itemResult positive">
-                <KeyboardArrowDownOutlinedIcon fontSize="small" />
-                <div className="resultAmount">
+          <div className='summary'>
+            <div className='item'>
+              <div className='itemTitle'>Target</div>
+              <div className='itemResult positive'>
+                <KeyboardArrowDownOutlinedIcon fontSize='small' />
+                <div className='resultAmount'>
                   {kFormatter(group.target)} {""} Rwf
                 </div>
               </div>
             </div>
-            <div className="item">
-              <div className="itemTitle">balance</div>
+            <div className='item'>
+              <div className='itemTitle'>balance</div>
               <div
                 className={`itemResult ${
                   group.targetReached >= group.target ? "positive" : "negative"
                 } `}
               >
-                <KeyboardArrowUpOutlinedIcon fontSize="small" />
-                <div className="resultAmount">
+                <KeyboardArrowUpOutlinedIcon fontSize='small' />
+                <div className='resultAmount'>
                   {kFormatter(group.targetReached)}
                   {""} Rwf
                 </div>
               </div>
             </div>
-            <div className="item">
-              <div className="itemTitle">
-                {group.target - group.targetReached > 0 ? "Remaining" : "Over"}
+            <div className='item'>
+              <div className='itemTitle'>
+                {group.target - group.targetReached > 0 ? "Remaining" : "Extra"}
               </div>
-              <div className="itemResult positive">
-                <KeyboardArrowUpOutlinedIcon fontSize="small" />
-                <div className="resultAmount">
+              <div className='itemResult positive'>
+                <KeyboardArrowUpOutlinedIcon fontSize='small' />
+                <div className='resultAmount'>
                   {kFormatter(
                     group.target - group.targetReached > 0
                       ? group.target - group.targetReached

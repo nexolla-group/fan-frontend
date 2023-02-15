@@ -140,14 +140,6 @@ function App() {
           }
         />
         <Route
-          path='/groups'
-          element={
-            <ProtectedRoute>
-              <AvairableGroups />
-            </ProtectedRoute>
-          }
-        />
-        <Route
           path='/userTransactions'
           element={
             <ProtectedRoute>

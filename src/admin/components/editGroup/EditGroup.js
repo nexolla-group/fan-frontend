@@ -26,18 +26,25 @@ const style = {
   p: 4,
 };
 export default function EditGroup({ open, setOpen, group, fetchGroups }) {
-  const [groupName, setGroupName] = useState(group.groupName);
-  const [description, setDescription] = useState(group.description);
+  const [groupName, setGroupName] = useState(group?.groupDetails?.groupName);
+  const [description, setDescription] = useState(
+    group?.groupDetails?.description
+  );
   const [loading, setLoading] = useState(false);
 
   const handleClose = () => setOpen(false);
   const handleEdit = () => {
     setLoading(true);
     axios
-      .put(process.env.REACT_APP_BACKEND_URL + "/api/groups/" + group._id, {
-        groupName,
-        description,
-      })
+      .put(
+        process.env.REACT_APP_BACKEND_URL +
+          "/api/groups/" +
+          group.groupDetails._id,
+        {
+          groupName,
+          description,
+        }
+      )
       .then((res) => {
         toastMessage("success", "Group is Updated");
         fetchGroups();
@@ -51,9 +58,11 @@ export default function EditGroup({ open, setOpen, group, fetchGroups }) {
   };
 
   useEffect(() => {
-    setGroupName(group.groupName);
-    setDescription(group.description);
-  }, [group]);
+    setGroupName(group?.groupDetails?.groupName);
+    setDescription(group?.groupDetails?.description);
+  }, [group.groupDetails]);
+
+  console.log("group to edit", group);
   return (
     <div>
       <Modal
@@ -89,11 +98,10 @@ export default function EditGroup({ open, setOpen, group, fetchGroups }) {
             <FormControl variant='standard' style={{ width: "100%" }}>
               <TextField
                 id='standard-multiline-static'
-                type='number'
                 label='Targeted amount'
                 rows={4}
                 variant='standard'
-                value={group.target}
+                value={group?.groupDetails?.target}
                 disabled
               />
             </FormControl>
